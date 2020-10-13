@@ -37,6 +37,7 @@ public class SistemaPrincipal {
                                     break;
                                 case "0":
                                     //Cerrar sesion y no guardar
+                                    Autenticacion.admin_logeado  = null;
                                     break label1;
                             }
                         }
