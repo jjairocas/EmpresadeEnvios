@@ -151,7 +151,7 @@ public class CRUDClientes {
                 return;
             }
         }
-        System.out.println("No exixte cliente con esa cédula ");
+        System.out.println("No existe cliente con esa cédula ");
     }
     public static void eliminarPorCorreo(){
         System.out.print("Correo: "); // Borrar por correo al cliente
@@ -162,7 +162,7 @@ public class CRUDClientes {
                 return;
             }
         }
-        System.out.println("No exixte empleado con ese correo ");
+        System.out.println("No existe empleado con ese correo ");
     }
 
     public static void confirmarEliminacion(Cliente cliente){

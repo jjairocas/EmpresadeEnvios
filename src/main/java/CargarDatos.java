@@ -15,7 +15,7 @@ public class CargarDatos {
 
         try (FileReader reader = new FileReader("admin.json"))   {
             Object obj = jsonParser.parse(reader);
-            JSONArray lista_admins = (JSONArray)obj ;
+            JSONArray lista_admins = (JSONArray)obj;
 
             for(Object adminObjeto : lista_admins){
                 JSONObject adminJSON = (JSONObject) adminObjeto ;

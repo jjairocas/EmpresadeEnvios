@@ -55,7 +55,7 @@ public class CRUDEmpresas {
                             return;
                         }
                     }
-                    System.out.println("No exixte empresa con ese nombre");
+                    System.out.println("No existe empresa con ese nombre");
                     break;
                 case "2":  // editar por NIT
                     System.out.print("NIT de la Empresa : "); // Editar por nombre de la empresa
@@ -126,7 +126,7 @@ public class CRUDEmpresas {
                 return;
             }
         }
-        System.out.println("No exixte empresa con ese nombre");
+        System.out.println("No existe empresa con ese nombre");
     }
     public static void eliminarPorNit(){
         System.out.print("NIT de la Empresa : "); // Borrar por nit de la empresa

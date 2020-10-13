@@ -101,11 +101,11 @@ public class CRUDSedes {
                 return;
             }
         }
-        System.out.println("No exixte sede con ese nombre");
+        System.out.println("No existe sede con ese nombre");
     }
 
     public static void editarPorCodigo(){
-        System.out.print("Código de la Sede : ");
+        System.out.print("Código de la Sede: ");
         String codigo = input.next();
         for (Sede sede : sedes) {
             if (sede.codigo.equalsIgnoreCase(codigo)) {
@@ -130,7 +130,7 @@ public class CRUDSedes {
                 }
             }
         }
-        System.out.println("No exixte sede con ese nombre");
+        System.out.println("No existe sede con ese nombre");
     }
     public static void eliminarPorCodigo(){
         System.out.print("Código de la Sede : "); // Borrar por nit de la empresa

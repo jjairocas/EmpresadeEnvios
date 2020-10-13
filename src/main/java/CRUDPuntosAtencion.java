@@ -88,7 +88,7 @@ public class CRUDPuntosAtencion {
                 return;
             }
         }
-        System.out.println("No exixte punto de atencion con ese código");
+        System.out.println("No existe punto de atencion con ese código");
     }
     public static void editarPorDireccion(){
         System.out.print("Dirección del punto de atención : "); // Editar por dirección del P_A
@@ -128,7 +128,7 @@ public class CRUDPuntosAtencion {
                 return;
             }
         }
-        System.out.println("No exixte punto de atención con ese código ");
+        System.out.println("No existe punto de atención con ese código ");
     }
 
     public static void eliminarPorDireccion(){

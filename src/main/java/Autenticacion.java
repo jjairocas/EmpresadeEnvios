@@ -60,10 +60,12 @@ public class Autenticacion {
                                     return;
                                 } else {
                                     System.out.println("Contraseña incorrecta");
+
                                 }
                             }
                         }
                         System.out.println("No hay clientes registrados con ese correo, verifique su datos por favor");
+
                     } else {
                         System.out.println("No hay clientes registrados");
                     }
@@ -82,13 +84,15 @@ public class Autenticacion {
                                     System.out.println("Empleado : " + empleado.nombre + " " + empleado.apellidos);
                                     System.out.println("____________________________________________________________");
                                     empleado_logeado = empleado;
-                                    return;
+
                                 } else {
                                     System.out.println("Contraseña incorrecta");
+
                                 }
                             }
                         }
                         System.out.println("No existe  empleado registrado con ese correo, verifique su datos por favor");
+                        return;
                     } else {
                         System.out.println("No hay empleados registrados en  el sistema");
                     }

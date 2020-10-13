@@ -8,10 +8,12 @@ public class Menus {
         System.out.println("_____________________________________________________________");
         System.out.println(" LOGIN");
         System.out.println("_____________________________________________________________");
+        System.out.println();
         System.out.println("1. Iniciar Sesión");
         System.out.println("2. Registrarse");
         System.out.println("0. Salir");
-        System.out.println("_______________________________________________________________");
+        System.out.println();
+        System.out.println("_____________________________________________________________");
         System.out.print("opcion: ");
         opcion = input.next();
         return opcion;
@@ -20,6 +22,7 @@ public class Menus {
     public static String menuTipoUsuarioIngreso(){
         String opcion;
         System.out.println("SELECCIONE EL TIPO DE USUARIO:");
+        System.out.println();
         System.out.println("1.Administrador");
         System.out.println("2.Cliente");
         System.out.println("3.Empleado");
@@ -31,6 +34,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Administración");
         System.out.println("2.Búsqueda");
         System.out.println("3.Diagnóstico de inconsistencias");
@@ -44,6 +48,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE  :");
+        System.out.println();
         System.out.println("1.Empresas");
         System.out.println("2.Sedes");
         System.out.println("3.Centros log+isticos");
@@ -60,6 +65,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver empresas");
         System.out.println("2.Crear empresa");
         System.out.println("3.Editar empresa");
@@ -82,6 +88,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE El CRITERIO PARA ORDENAR :");
+        System.out.println();
         System.out.println("1.Alfabeticamente");
         System.out.println("2.Por cantidad de sedes");
         System.out.println("3.Por cantidad de centros logísticos");
@@ -97,6 +104,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver sedes");
         System.out.println("2.Crear sede");
         System.out.println("3.Editar sede");
@@ -109,6 +117,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver centro logistico");
         System.out.println("2.Crear centro logistico");
         System.out.println("3.Editar centro logístico");
@@ -122,6 +131,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver Puntos Atencion");
         System.out.println("2.Crear Punto Atencion");
         System.out.println("3.Editar Punto de Atencion");
@@ -135,6 +145,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver lista Empleados");
         System.out.println("2.Crear Empleado");
         System.out.println("3.Editar Empleado");
@@ -147,6 +158,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver lista clientes");
         System.out.println("2.Crear cliente");
         System.out.println("3.Editar cliente");
@@ -160,6 +172,7 @@ public class Menus {
         String opcion;
         System.out.println("___________________________________________");
         System.out.println("SELECCIONE LO QUE DESEA REALIZAR :");
+        System.out.println();
         System.out.println("1.Ver paquetes");
         System.out.println("2.Crear paquete");
         System.out.println("3.Editar paquete");

@@ -148,7 +148,7 @@ public class CRUDEmpleados {
                 return;
             }
         }
-        System.out.println("No exixte empleado con esa cédula ");
+        System.out.println("No existe empleado con esa cédula ");
     }
     public static void eliminarPorCorreo(){
         System.out.print("Correo: "); // Borrar por correo al empleado
@@ -159,7 +159,7 @@ public class CRUDEmpleados {
                 return;
             }
         }
-        System.out.println("No exixte empleado con ese correo ");
+        System.out.println("No existe empleado con ese correo ");
     }
 
     public static void confirmarEliminacion(Empleado empleado){

@@ -44,7 +44,7 @@ public class CRUDCentrosLog {
                     return;
                 }
             }
-            System.out.println("No exixte empresa con ese nombre");
+            System.out.println("No existe empresa con ese nombre");
         }
     }
     public static void eliminarCentroLog() {
@@ -67,7 +67,7 @@ public class CRUDCentrosLog {
                         }
                     }
                 }
-                System.out.println("No exixte centro logísitico con ese nombre");
+                System.out.println("No existe centro logísitico con ese nombre");
             }else if(opcion.equals("0")){
                 break;
             }
