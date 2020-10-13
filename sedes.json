@@ -1,0 +1,194 @@
+[
+  {
+    "nombre": "Medellin",
+    "codigo": "SMED",
+    "centros_logisticos": [
+      { "codigo": "CLMED1",
+        "puntos_atencion": [
+          {"codigo": "PAMED1",
+            "direccion": "Cra48#18-47",
+            "paquetes_por_enviar": [],
+            "paquetes_por_entregar": [],
+            "clientes": [
+              {"cedula":"1324567842",
+                "nombre":"Jaime",
+                "apellidos":"Uribe",
+                "correo":"jaimeuribe@gmail.com",
+                "password":"cliente1",
+                "paquetes": [
+                  {"codigo_paquete":"1",
+                    "codigo_origen":"PAMED1",
+                    "codigo_destino":null,
+                    "cedula_remitente":"1324567842",
+                    "cedula_destinatario":null,
+                    "estado":false
+                  }
+                ]
+              },
+              {"cedula":"1967845632",
+                "nombre":"Luis",
+                "apellidos":"Perea",
+                "correo":"luisperea@gmail.com",
+                "password":"cliente2",
+                "paquetes": []
+              }
+            ]
+          }
+        ],
+        "empleados":[
+          {"cedula":"1023456789",
+            "nombre":"Pedro",
+            "apellidos":"Perez",
+            "correo":"pedroperez@servientrega.com",
+            "password":"empleado1"
+          }
+        ],
+        "paquetes": []
+      }
+    ]
+  },
+  {
+    "nombre": "Cali",
+    "codigo": "SCAL",
+    "centros_logisticos": [
+      { "codigo": "CLCAL1",
+        "puntos_atencion": [
+          {"codigo": "PACAL1",
+            "direccion": "Cra80#13-34",
+            "paquetes_por_enviar": [],
+            "paquetes_por_entregar": [],
+            "clientes": [
+              {"cedula":"1867843466",
+                "nombre":"Andrea",
+                "apellidos":"Sarria",
+                "correo":"andreasarria@gmail.com",
+                "password":"cliente3",
+                "paquetes": [
+                  {"codigo_paquete":"2",
+                    "codigo_origen":"PACAL1",
+                    "codigo_destino":null,
+                    "cedula_remitente":"1867843466",
+                    "cedula_destinatario":null,
+                    "estado":false
+                  }
+                ]
+              },
+              {"cedula":"1217456984",
+                "nombre":"Ana",
+                "apellidos":"Saldarriaga",
+                "correo":"anasaldarriaga@gmail.com",
+                "password":"cliente4",
+                "paquetes": []
+              }
+            ]
+          }
+        ],
+        "empleados":[
+          {"cedula":"1045678567",
+            "nombre":"Juan",
+            "apellidos":"Tobon",
+            "correo":"juantobon@servientrega.com",
+            "password":"empleado2"
+          }
+        ],
+        "paquetes": []
+      }
+    ]
+  },
+  {
+    "nombre": "Bogota",
+    "codigo": "SBOG",
+    "centros_logisticos": [
+      { "codigo": "CLBOG1",
+        "puntos_atencion": [
+          {"codigo": "PABOG1",
+            "direccion": "Cra70#34-12",
+            "paquetes_por_enviar": [],
+            "paquetes_por_entregar": [],
+            "clientes": [
+              {"cedula":"1003456789",
+                "nombre":"Gloria",
+                "apellidos":"Duque",
+                "correo":"gloriaduque@gmail.com",
+                "password":"cliente5",
+                "paquetes": [
+                  {"codigo_paquete":"3",
+                    "codigo_origen":"PABOG1",
+                    "codigo_destino":null,
+                    "cedula_remitente":"1003456789",
+                    "cedula_destinatario":null,
+                    "estado":false
+                  }
+                ]
+              },
+              {"cedula":"1003456001",
+                "nombre":"Paula",
+                "apellidos":"Osorio",
+                "correo":"paulaosorio@gmail.com",
+                "password":"cliente6",
+                "paquetes": []
+              }
+            ]
+          }
+        ],
+        "empleados":[
+          {"cedula":"1234562345",
+            "nombre":"Carlos",
+            "apellidos":"Suarez",
+            "correo":"carlossuarez@servientrega.com",
+            "password":"empleado3"
+          }
+        ],
+        "paquetes": []
+      }
+    ]
+  },
+  {
+    "nombre": "Barranquilla",
+    "codigo": "SBAR",
+    "centros_logisticos": [
+      { "codigo": "CLBAR1",
+        "puntos_atencion": [
+          {"codigo": "PABAR1",
+            "direccion": "Cra10#10-14",
+            "paquetes_por_enviar": [],
+            "paquetes_por_entregar": [],
+            "clientes": [
+              {"cedula":"1003457701",
+                "nombre":"Daniel",
+                "apellidos":"Mejia",
+                "correo":"danielmejia@gmail.com",
+                "password":"cliente7",
+                "paquetes": [
+                  {"codigo_paquete":"4",
+                    "codigo_origen":"PABAR1",
+                    "codigo_destino":null,
+                    "cedula_remitente":"1003457701",
+                    "cedula_destinatario":null,
+                    "estado":false
+                  }
+                ]
+              },
+              {"cedula":"1122343567",
+                "nombre":"Felipe",
+                "apellidos":"Sanchez",
+                "correo":"felipesanchez@gmail.com",
+                "password":"cliente8",
+                "paquetes": []
+              }
+            ]
+          }
+        ],
+        "empleados":[
+          {"cedula":"1253678945",
+            "nombre":"Sofia",
+            "apellidos":"Lopez",
+            "correo":"sofialopez@servientrega.com",
+            "password":"empleado4"
+          }
+        ],
+        "paquetes": []
+      }
+    ]
+  }
+]

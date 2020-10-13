@@ -1,0 +1,30 @@
+[
+  {"codigo_paquete":"1",
+    "codigo_origen":"PAMED1",
+    "codigo_destino":null,
+    "cedula_remitente":"1324567842",
+    "cedula_destinatario":null,
+    "estado":false
+  },
+  {"codigo_paquete":"2",
+    "codigo_origen":"PACAL1",
+    "codigo_destino":null,
+    "cedula_remitente":"1867843466",
+    "cedula_destinatario":null,
+    "estado":false
+  },
+  {"codigo_paquete":"3",
+    "codigo_origen":"PABOG1",
+    "codigo_destino":null,
+    "cedula_remitente":"1003456789",
+    "cedula_destinatario":null,
+    "estado":false
+  },
+  {"codigo_paquete":"4",
+    "codigo_origen":"PABAR1",
+    "codigo_destino":null,
+    "cedula_remitente":"1003457701",
+    "cedula_destinatario":null,
+    "estado":false
+  }
+]

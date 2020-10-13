@@ -1,0 +1,8 @@
+[
+  { "apellidos":"admin",
+    "password":"admin",
+    "cedula":"0000",
+    "correo":"admin@unal.edu.co",
+    "nombre":"admin"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {"cedula":"1023456789",
+    "nombre":"Pedro",
+    "apellidos":"Perez",
+    "correo":"pedroperez@servientrega.com",
+    "password":"empleado1"
+  },
+  {"cedula":"1045678567",
+    "nombre":"Juan",
+    "apellidos":"Tobon",
+    "correo":"juantobon@servientrega.com",
+    "password":"empleado2"
+  },
+  {"cedula":"1234562345",
+    "nombre":"Carlos",
+    "apellidos":"Suarez",
+    "correo":"carlossuarez@servientrega.com",
+    "password":"empleado3"
+  },
+  {"cedula":"1253678945",
+    "nombre":"Sofia",
+    "apellidos":"Lopez",
+    "correo":"sofialopez@servientrega.com",
+    "password":"empleado4"
+  }
+]
