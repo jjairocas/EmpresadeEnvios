@@ -5,7 +5,7 @@ public class SistemaPrincipal {
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args){
-        //Agradecido con el de arriba
+        
         String option1;
         label:
         while(true) {
