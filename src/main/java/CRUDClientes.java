@@ -96,6 +96,7 @@ public class CRUDClientes {
                 for(C_logistico centroLogistico: sede.centros_logisticos){
                     for(P_atencion puntoAtencion: centroLogistico.puntos_atencion){
                         if(puntoAtencion.codigo.equalsIgnoreCase(codigoPuntoAtencion)){
+                            puntoAtencion.clientes.add(cliente_nuevo);
                             return;
                         }
                     }

@@ -21,18 +21,18 @@ public class CRUDPaquetes {
         }
     }
 
-    public static void crearPaquetes(){
+    public static void crearPaquetes() {
 
         System.out.println("Codigo del paquete: ");
         String codigoPaquete = input.next();
-        for(Paquete paquete: paquetes){
-            if(paquete.codigo_paquete.equalsIgnoreCase(codigoPaquete)){
+        for (Paquete paquete : paquetes) {
+            if (paquete.codigo_paquete.equalsIgnoreCase(codigoPaquete)) {
                 System.out.println("Lo sentimos, ya existe un paquete con este codigo");
                 return;
             }
         }
 
-        for(P_atencion punto : puntos_atencion){
+        for (P_atencion punto : puntos_atencion) {
             System.out.println(punto);
         }
 
@@ -45,19 +45,19 @@ public class CRUDPaquetes {
         String cedulaRemitente = null;
 
 
-        for(P_atencion punto : puntos_atencion){
-            if(punto.codigo.equalsIgnoreCase(codigoOrigen)){
+        for (P_atencion punto : puntos_atencion) {
+            if (punto.codigo.equalsIgnoreCase(codigoOrigen)) {
 
                 System.out.println("Lista clientes en el punto de atencion");
-                for(Cliente cliente: punto.clientes){
+                for (Cliente cliente : punto.clientes) {
                     System.out.println(cliente);
                 }
 
                 System.out.println("Ingrese la cedula del remitente: ");
                 cedulaRemitente = input.next();
 
-                for(Cliente cliente : clientes){
-                    if(cliente.cedula.equalsIgnoreCase(cedulaRemitente)){
+                for (Cliente cliente : clientes) {
+                    if (cliente.cedula.equalsIgnoreCase(cedulaRemitente)) {
                         existeCedulaRemitente = true;
                         break;
                     }
@@ -67,33 +67,86 @@ public class CRUDPaquetes {
                 break;
             }
         }
-        if(!existeOrigen){
+        if (!existeOrigen) {
             System.out.println("No existe un punto de atencion con este codigo");
-        }
-        else if(!existeCedulaRemitente)
+        } else if (!existeCedulaRemitente)
             System.out.println("No existe un cliente con esta cedula");
-        else{
+        else {
 
             System.out.println("Ingrese el codigo del punto de atencion destino");
             String codigoPuntoAtencionDestino = input.next();
 
 
-            for(P_atencion puntoDestino : puntos_atencion) {
+            for (P_atencion puntoDestino : puntos_atencion) {
                 if (puntoDestino.codigo.equalsIgnoreCase(codigoPuntoAtencionDestino)) {
                     String codigoDestino = puntoDestino.codigo;
+
+
+                    System.out.println("Lista clientes en el punto de atencion");
+                    for (Cliente cliente : puntoDestino.clientes) {
+                        System.out.println(cliente);
+                    }
+
+
 
                     System.out.println("Cedula destinatario: ");
                     String cedulaDestinatario = input.next();
 
-                    for(Cliente cliente1: puntoDestino.clientes){
-                        if(cliente1.cedula.equalsIgnoreCase(cedulaDestinatario)){
+                    for (Cliente cliente1 : puntoDestino.clientes) {
+                        if (cliente1.cedula.equalsIgnoreCase(cedulaDestinatario)) {
                             boolean estado = false;
                             Paquete nuevoPaquete = new Paquete(codigoPaquete, codigoOrigen, codigoDestino, cedulaRemitente, cedulaDestinatario, estado);
                             paquetes.add(nuevoPaquete);
 
-                            for(P_atencion puntoDeAtencion: puntos_atencion){}
+                            for (P_atencion puntoDeAtencion : puntos_atencion) {
+                                if (puntoDeAtencion.codigo.equalsIgnoreCase(codigoOrigen)) {
+                                    puntoDeAtencion.paquetes_por_enviar.add(nuevoPaquete);
 
-                            return;
+
+                                    for(P_atencion punto : puntos_atencion){
+                                        if(punto.codigo.equalsIgnoreCase(codigoOrigen)){
+                                            punto.paquetes_por_enviar.add(nuevoPaquete);
+                                            return;
+                                        }
+                                    }
+
+
+                                    for(C_logistico Clogistico: centros_logisticos){
+                                        for(P_atencion punto: Clogistico.puntos_atencion){
+                                            if(punto.codigo.equalsIgnoreCase(codigoOrigen)){
+                                                punto.paquetes_por_enviar.add(nuevoPaquete);
+                                                return;
+                                            }
+                                        }
+                                    }
+
+
+                                    for (Sede sede: sedes){
+                                        for (C_logistico cLogistico: sede.centros_logisticos){
+                                            for (P_atencion punto: cLogistico.puntos_atencion){
+                                                if(punto.codigo.equalsIgnoreCase(codigoOrigen)){
+                                                    punto.paquetes_por_enviar.add(nuevoPaquete);
+                                                    return;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    for (EmpresaEnvio empresa : empresas) {
+                                        for (Sede sede : empresa.sedes) {
+                                            for (C_logistico centroLogistico : sede.centros_logisticos) {
+                                                for (P_atencion puntoAtencion : centroLogistico.puntos_atencion) {
+                                                    if (puntoAtencion.codigo.equalsIgnoreCase(codigoOrigen)) {
+                                                        puntoAtencion.paquetes_por_enviar.add(nuevoPaquete);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    System.out.println("Se han agregado los datos correctamente");
+                                    return;
+                                }
+                            }
                         }
                     }
                     System.out.println("No existe un cliente con esta cedula");
@@ -105,15 +158,10 @@ public class CRUDPaquetes {
         }
 
 
+        }
 
 
 
-
-
-
-
-
-    }
 
     public static void borrarPaquete(){
 
