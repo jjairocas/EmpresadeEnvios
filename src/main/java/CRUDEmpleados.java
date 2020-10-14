@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class CRUDEmpleados {
     public static ArrayList<Empleado> empleados = CargarDatos.cargarEmpleados();
     public static Scanner input = new Scanner(System.in);
+    public static ArrayList<C_logistico> centros_logisticos = CRUDCentrosLog.centros_logisticos;
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
+    public static ArrayList<Sede> sedes = CRUDSedes.sedes;
 
     public static void verEmpleados(){
         System.out.println("LISTADO DE EMPLEADOS: ");
@@ -42,7 +45,46 @@ public class CRUDEmpleados {
         }
         Empleado empleado_nuevo = new Empleado(cedula,nombre,apellido,correo,password);
         empleados.add(empleado_nuevo);
-        System.out.println("¡Empleado registrado con éxito");
+
+
+
+        System.out.println("LISTADO DE CENTROS LOGÍSTICOS: ");
+        for(C_logistico centro_log : centros_logisticos){
+            System.out.println(centro_log);
+        }
+
+        System.out.println("Escriba codigo del centro logistico al que pertenece: ");
+        String nombreCentroLogistico = input.next();
+
+
+        for(C_logistico Clogistico: centros_logisticos){
+            if(Clogistico.codigo.equalsIgnoreCase(nombreCentroLogistico)){
+                Clogistico.empleados.add(empleado_nuevo);
+                System.out.println("Empleado agregado con exito");
+                return;
+            }
+        }
+
+
+        for (Sede sede: sedes){
+            for (C_logistico cLogistico: sede.centros_logisticos){
+                if(cLogistico.codigo.equalsIgnoreCase(nombreCentroLogistico)){
+                    cLogistico.empleados.add(empleado_nuevo);
+                    return;
+                }
+            }
+        }
+
+        for (EmpresaEnvio empresa : empresas) {
+            for (Sede sede : empresa.sedes) {
+                for (C_logistico CLogistico : centros_logisticos) {
+                    CLogistico.empleados.add(empleado_nuevo);
+                }
+            }
+        }
+
+        System.out.println("No se encontro un centro logistico con este codigo");
+
     }
     public static void editarEmpleado(){
         label:

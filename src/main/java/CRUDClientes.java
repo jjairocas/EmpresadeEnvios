@@ -5,6 +5,10 @@ public class CRUDClientes {
 
     public static ArrayList<Cliente> clientes = CargarDatos.cargarClientes();
     public static Scanner input = new Scanner(System.in);
+    public static ArrayList<C_logistico> centros_logisticos = CRUDCentrosLog.centros_logisticos;
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
+    public static ArrayList<Sede> sedes = CRUDSedes.sedes;
+    public static ArrayList<P_atencion> puntos_atencion = CRUDPuntosAtencion.puntos_atencion;
 
 
     public static void verCliente(){
@@ -45,7 +49,62 @@ public class CRUDClientes {
         ArrayList<Paquete> paquetes = new ArrayList<>();
         Cliente cliente_nuevo = new Cliente(cedula,nombre,apellido,correo,password,paquetes);
         clientes.add(cliente_nuevo);
-        System.out.println("¡Cliente registrado con éxito");
+
+
+        System.out.println("LISTADO DE PUNTOS DE ATENCIÓN: ");
+        for(P_atencion punto : puntos_atencion){
+            System.out.println(punto);
+        }
+        System.out.println("Escriba el punto de atencion al que accede el cliente");
+        String codigoPuntoAtencion = input.next();
+
+        for(P_atencion punto : puntos_atencion){
+            if(punto.codigo.equalsIgnoreCase(codigoPuntoAtencion)){
+                punto.clientes.add(cliente_nuevo);
+                System.out.println("Se agrego el cliente con exito");
+                return;
+            }
+        }
+
+
+        for(C_logistico Clogistico: centros_logisticos){
+            for(P_atencion punto: Clogistico.puntos_atencion){
+                if(punto.codigo.equalsIgnoreCase(codigoPuntoAtencion)){
+                    punto.clientes.add(cliente_nuevo);
+                    return;
+                }
+            }
+        }
+
+
+        for (Sede sede: sedes){
+            for (C_logistico cLogistico: sede.centros_logisticos){
+                for (P_atencion punto: cLogistico.puntos_atencion){
+                    if(punto.codigo.equalsIgnoreCase(codigoPuntoAtencion)){
+                        punto.clientes.add(cliente_nuevo);
+                        return;
+                    }
+                }
+            }
+        }
+
+
+
+
+        for (EmpresaEnvio empresa : empresas) {
+            for (Sede sede : empresa.sedes) {
+                for(C_logistico centroLogistico: sede.centros_logisticos){
+                    for(P_atencion puntoAtencion: centroLogistico.puntos_atencion){
+                        if(puntoAtencion.codigo.equalsIgnoreCase(codigoPuntoAtencion)){
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println("No existe un punto de atencio con este codigo");
+
     }
     public static void editarCliente(){
         label:

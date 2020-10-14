@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,6 +9,10 @@ public class CRUDPaquetes {
     public static ArrayList<Paquete> paquetes = CargarDatos.cargarPaquetes();
     public static Scanner input = new Scanner(System.in);
     public static ArrayList<Cliente> clientes = CargarDatos.cargarClientes();
+    public static ArrayList<C_logistico> centros_logisticos = CRUDCentrosLog.centros_logisticos;
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
+    public static ArrayList<Sede> sedes = CRUDSedes.sedes;
+    public static ArrayList<P_atencion> puntos_atencion = CRUDPuntosAtencion.puntos_atencion;
 
     public static void verPaquetes(){
         System.out.println("LISTADO DE PAQUETES: ");
@@ -16,6 +22,7 @@ public class CRUDPaquetes {
     }
 
     public static void crearPaquetes(){
+
         System.out.println("Codigo del paquete: ");
         String codigoPaquete = input.next();
         for(Paquete paquete: paquetes){
@@ -24,36 +31,88 @@ public class CRUDPaquetes {
                 return;
             }
         }
-        System.out.println("Codigo origen: ");
-        String codigoOrigen = input.next();
 
-        System.out.println("Codigo Destino: ");
-        String codigoDestino = input.next();
-
-        System.out.println("Cedula remitente: ");
-        String cedulaRemitente = input.next();
-
-        for(Paquete paquete: paquetes){
-            if(paquete.cedula_remitente.equalsIgnoreCase(cedulaRemitente)){
-                System.out.println("Lo sentimos, no existe un cliente con esta cedula");
-                return;
-            }
+        for(P_atencion punto : puntos_atencion){
+            System.out.println(punto);
         }
 
-        /*System.out.println("Cedula destinatario: ");*/
-        String cedulaDestinatario = null;
+        System.out.println("Ingrese el codigo del punto de atencion origen");
+        String codigoOrigen = input.next();
 
-        /*for(Paquete paquete: paquetes){
-            if(paquete.cedula_destinatario.equalsIgnoreCase(cedulaDestinatario)){
-                System.out.println("Lo sentimos, no existe un cliente con esta cedula");
-                return;
+
+        boolean existeOrigen = false;
+        boolean existeCedulaRemitente = false;
+        String cedulaRemitente = null;
+
+
+        for(P_atencion punto : puntos_atencion){
+            if(punto.codigo.equalsIgnoreCase(codigoOrigen)){
+
+                System.out.println("Lista clientes en el punto de atencion");
+                for(Cliente cliente: punto.clientes){
+                    System.out.println(cliente);
+                }
+
+                System.out.println("Ingrese la cedula del remitente: ");
+                cedulaRemitente = input.next();
+
+                for(Cliente cliente : clientes){
+                    if(cliente.cedula.equalsIgnoreCase(cedulaRemitente)){
+                        existeCedulaRemitente = true;
+                        break;
+                    }
+                }
+
+                existeOrigen = true;
+                break;
             }
-        }*/
+        }
+        if(!existeOrigen){
+            System.out.println("No existe un punto de atencion con este codigo");
+        }
+        else if(!existeCedulaRemitente)
+            System.out.println("No existe un cliente con esta cedula");
+        else{
 
-        Boolean estado = false;
+            System.out.println("Ingrese el codigo del punto de atencion destino");
+            String codigoPuntoAtencionDestino = input.next();
 
-        Paquete paquete = new Paquete(codigoPaquete,codigoOrigen,codigoDestino,cedulaRemitente,cedulaDestinatario,estado);
-        paquetes.add(paquete);
+
+            for(P_atencion puntoDestino : puntos_atencion) {
+                if (puntoDestino.codigo.equalsIgnoreCase(codigoPuntoAtencionDestino)) {
+                    String codigoDestino = puntoDestino.codigo;
+
+                    System.out.println("Cedula destinatario: ");
+                    String cedulaDestinatario = input.next();
+
+                    for(Cliente cliente1: puntoDestino.clientes){
+                        if(cliente1.cedula.equalsIgnoreCase(cedulaDestinatario)){
+                            boolean estado = false;
+                            Paquete nuevoPaquete = new Paquete(codigoPaquete, codigoOrigen, codigoDestino, cedulaRemitente, cedulaDestinatario, estado);
+                            paquetes.add(nuevoPaquete);
+
+                            for(P_atencion puntoDeAtencion: puntos_atencion){}
+
+                            return;
+                        }
+                    }
+                    System.out.println("No existe un cliente con esta cedula");
+
+
+                }
+            }
+            System.out.println("No existe un punto de atencion con este codigo");
+        }
+
+
+
+
+
+
+
+
+
+
     }
 
     public static void borrarPaquete(){

@@ -1,3 +1,5 @@
+import sun.security.pkcs11.wrapper.CK_LOCKMUTEX;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -7,6 +9,9 @@ public class CRUDPuntosAtencion {
 
     public static ArrayList<P_atencion> puntos_atencion = CargarDatos.cargarPuntosAtencion();
     public static Scanner input = new Scanner(System.in);
+    public static ArrayList<C_logistico> centros_logisticos = CRUDCentrosLog.centros_logisticos;
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
+    public static ArrayList<Sede> sedes = CRUDSedes.sedes;
 
     public static void verPuntosAtencion(){
         System.out.println("LISTADO DE PUNTOS DE ATENCIÓN: ");
@@ -31,12 +36,52 @@ public class CRUDPuntosAtencion {
                 return;
             }
         }
+
+
         Deque<Paquete> paquetes_por_enviar = new LinkedList<>();
         ArrayList<Paquete> paquetes_por_entregar = new ArrayList<>();
         Deque<Cliente> cola_clientes = new LinkedList<>();
         P_atencion punto_nuevo = new P_atencion(codigo,direccion,paquetes_por_enviar,paquetes_por_entregar,cola_clientes);
         puntos_atencion.add(punto_nuevo);
-        System.out.println("¡Punto de Atencion creado con éxito");
+
+
+        System.out.println("LISTADO DE CENTROS LOGÍSTICOS: ");
+        for(C_logistico centro_log : centros_logisticos){
+            System.out.println(centro_log);
+        }
+
+        System.out.println("Escriba codigo del centro logistico al que pertenece: ");
+        String nombreCentroLogistico = input.next();
+
+
+        for(C_logistico Clogistico: centros_logisticos){
+            if(Clogistico.codigo.equalsIgnoreCase(nombreCentroLogistico)){
+                Clogistico.puntos_atencion.add(punto_nuevo);
+                System.out.println("Punto agregado con exito");
+                return;
+            }
+        }
+
+
+        for (Sede sede: sedes){
+            for (C_logistico cLogistico: sede.centros_logisticos){
+                if(cLogistico.codigo.equalsIgnoreCase(nombreCentroLogistico)){
+                    cLogistico.puntos_atencion.add(punto_nuevo);
+                    return;
+                }
+            }
+        }
+
+        for (EmpresaEnvio empresa : empresas) {
+            for (Sede sede : empresa.sedes) {
+                for (C_logistico CLogistico : centros_logisticos) {
+                    CLogistico.puntos_atencion.add(punto_nuevo);
+                }
+            }
+        }
+
+
+        System.out.println("No se encuentra un centro logistico con este codigo");
     }
     public static void editarPuntoAtencion(){
         label:

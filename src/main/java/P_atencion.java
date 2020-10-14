@@ -30,7 +30,7 @@ public class P_atencion {
                 "direccion : '" + direccion + "\n"+
                 "Cantidad de paquetes por enviar : " + paquetes_por_enviar.size() +"\n"+
                 "Cantidad de paquetes por entregar :" + paquetes_por_entregar.size()+"\n"+
-                "cantidad de clientes en cola =" + clientes.size() +"\n"+
+                "cantidad de clientes en punto de atencion=" + clientes.size() +"\n"+
                 "___________________________________________________" +"\n";
     }
 

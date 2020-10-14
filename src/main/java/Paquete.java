@@ -8,6 +8,9 @@ public class Paquete {
     String cedula_destinatario = null;
     boolean estado = false;
 
+    public Paquete() {
+    }
+
     public Paquete(String codigo_paquete, String codigo_origen, String codigo_destino, String cedula_remitente, String cedula_destinatario, boolean estado) {
         this.codigo_paquete = codigo_paquete;
         this.codigo_origen = codigo_origen;
@@ -17,8 +20,7 @@ public class Paquete {
         this.estado = estado;
     }
 
-    public Paquete() {
-    }
+
 
     @Override
     public String toString() {

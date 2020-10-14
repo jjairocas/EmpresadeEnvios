@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class CRUDCentrosLog {
     public static ArrayList<C_logistico> centros_logisticos = CargarDatos.cargarCentrosLogisticos();
     public static Scanner input = new Scanner(System.in);
+    public static ArrayList<Sede> sedes = CRUDSedes.sedes;
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
 
     public static void verCentrosLog(){
         System.out.println("LISTADO DE CENTROS LOGÍSTICOS: ");
@@ -20,12 +22,46 @@ public class CRUDCentrosLog {
                 return;
             }
         }
+
+        System.out.println("LISTADO DE SEDES: ");
+        for(Sede sede :sedes){
+            System.out.println(sede);
+        }
+
         ArrayList<P_atencion> puntos_atencion = new ArrayList<>();
         ArrayList<Empleado> empleados = new ArrayList<>();
         ArrayList<Paquete> paquetes = new ArrayList<>();
         C_logistico centro_log_nuevo = new C_logistico(codigo,puntos_atencion,empleados,paquetes);
         centros_logisticos.add(centro_log_nuevo);
-        System.out.println("¡Centro logistico creada con éxito");
+
+
+        System.out.println("Seleccione el nombre de la sede a la que pertenece el centro logistico: ");
+        String nombresede = input.next();
+
+
+
+        for(Sede sede : sedes){
+            if(sede.nombre.equalsIgnoreCase(nombresede)){
+                sede.centros_logisticos.add(centro_log_nuevo);
+                System.out.println("¡Centro logistico creado con éxito");
+                return;
+            }
+        }
+        System.out.println("No existe sede con este nombre");
+
+
+
+
+
+        for (EmpresaEnvio empresa : empresas) {
+            for (Sede sede : empresa.sedes) {
+                if (sede.nombre.equalsIgnoreCase(nombresede)) {
+                    sede.centros_logisticos.add(centro_log_nuevo);
+                    return;
+                }
+            }
+        }
+
     }
     public static void editarCentroLog(){
         while (true) {

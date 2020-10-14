@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class CRUDSedes {
     public static ArrayList<Sede> sedes = CargarDatos.cargarSedes();
     public static Scanner input = new Scanner(System.in);
+    public static ArrayList<EmpresaEnvio> empresas = CRUDEmpresas.empresas;
 
     public static void verSedes(){
         System.out.println("LISTADO DE SEDES: ");
@@ -28,10 +29,30 @@ public class CRUDSedes {
                 return;
             }
         }
+
+        System.out.println("LISTADO DE EMPRESAS: ");
+        for(EmpresaEnvio empresa : empresas){
+            System.out.println(empresa);
+        }
+
         ArrayList<C_logistico> centros_log = new ArrayList<>();
         Sede sede_nueva = new Sede(nombre,codigo,centros_log);
         sedes.add(sede_nueva);
-        System.out.println("¡Empresa creada con éxito");
+
+        System.out.println("Seleccione el nombre de la empresa a la que pertenece la sede: ");
+        String nombreEmpresa = input.next();
+
+
+
+        for(EmpresaEnvio empresa : empresas){
+            if(empresa.nombre.equalsIgnoreCase(nombreEmpresa)){
+                empresa.sedes.add(sede_nueva);
+                System.out.println("¡Sede creada con éxito");
+                return;
+            }
+        }
+        System.out.println("No existe una empresa con este nombre");
+
     }
 
     public static void editarSede(){
