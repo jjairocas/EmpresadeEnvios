@@ -101,7 +101,7 @@ public class CRUDEmpresas {
 
     public static void cambiarDatos(EmpresaEnvio empresa){
         System.out.println("Nombre: " + empresa.nombre);
-        System.out.println("¿Quiere cambiar el nomrbre? Ingrese Y o N");
+        System.out.println("¿Quiere cambiar el nombre? Ingrese Y o N");
         String eleccion1 = input.next();
         if (eleccion1.equalsIgnoreCase("Y")) {
             System.out.print("Nuevo nombre:");
