@@ -155,17 +155,17 @@ public class CRUD {
                     while (true){
                         String opcion1 = Menus.menuCrudPaquetes();
                         switch (opcion1){
-                            case "1": // ver empleados
+                            case "1": // ver paquetes
                                 CRUDPaquetes.verPaquetes();
                                 break;
-                            case "2":  // crear empleado
-                                //..pendiente
+                            case "2":  // crear paquetes
+                                CRUDPaquetes.crearPaquetes();
                                 break;
-                            case "3":  //editar empleado
-                                //...pendiente
+                            case "3":  //editar paquetes
+                                CRUDPaquetes.editarPaquete();
                                 break;
-                            case "4":  // Eliminar empleado
-                                //...pendiente
+                            case "4":  // Eliminar paquetes
+                                CRUDPaquetes.borrarPaquete();
                                 break;
                             case "0":
                                 break label1;

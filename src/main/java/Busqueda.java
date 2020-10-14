@@ -38,12 +38,15 @@ public class Busqueda {
 
                                 break;
                             case "5": // ordenar Por cantidad de Empleados
+                                //ESTE SE PUEDE BORRAR
 
                                 break;
                             case "6": // Por cantidad de Clientes
+                                //ESTE SE PUEDE BORRAR
 
                                 break;
                             case "7": // Por cantidad de Paquetes registrados
+                                //ESE SE PUEDE BORRAR
 
                                 break;
                             case "0": // Atrás

@@ -51,7 +51,7 @@ public class Menus {
         System.out.println();
         System.out.println("1.Empresas");
         System.out.println("2.Sedes");
-        System.out.println("3.Centros log+isticos");
+        System.out.println("3.Centros logisticos");
         System.out.println("4.Puntos de atención");
         System.out.println("5.Empleados");
         System.out.println("6.Clientes");
