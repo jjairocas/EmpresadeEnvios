@@ -25,13 +25,13 @@ public class P_atencion {
 
     @Override
     public String toString() {
-        return "___________________________________________________" +"\n"+
-                "codigo :'" + codigo + "\n"+
-                "direccion : '" + direccion + "\n"+
-                "Cantidad de paquetes por enviar : " + paquetes_por_enviar.size() +"\n"+
-                "Cantidad de paquetes por entregar :" + paquetes_por_entregar.size()+"\n"+
-                "cantidad de clientes en punto de atencion=" + clientes.size() +"\n"+
-                "___________________________________________________" +"\n";
+        return " ______________________________________________________________________" +"\n"+
+                "|codigo                                    : " + codigo + "\n"+
+                "|direccion                                 : " + direccion + "\n"+
+                "|Cantidad de paquetes por enviar           : " + paquetes_por_enviar.size() +"\n"+
+                "|Cantidad de paquetes por entregar         : " + paquetes_por_entregar.size()+"\n"+
+                "|cantidad de clientes en punto de atencion : " + clientes.size() +"\n"+
+                "|_____________________________________________________________________" +"\n";
     }
 
     public static P_atencion parsePuntoAtencion(JSONObject punto_atencion_json){

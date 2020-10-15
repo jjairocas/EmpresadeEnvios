@@ -105,22 +105,4 @@ public class Cliente {
         return correo_valido;
     }
 
-    public static Cliente buscarCliente(ArrayList<Cliente> clientes,String correo){
-        for(Cliente cliente1 : clientes){
-            if(cliente1.correo.equals(correo)){
-                return cliente1;
-            }
-        }
-        return null;
-    }
-
-    public static boolean passwordValida(ArrayList<Cliente> clientes,Cliente cliente){
-        boolean passw_valida = true;
-        for(Cliente cliente1 : clientes){
-            if(cliente.password.equals(cliente1.password)){
-                passw_valida= false;
-            }
-        }
-        return passw_valida;
-    }
 }
