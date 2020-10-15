@@ -7,6 +7,7 @@ public class OrdenSedes {
     public static Scanner input=new Scanner(System.in);
 
     public static void ordenarAlfabeticamente(ArrayList<Sede> sedes){
+        ArrayList<Sede> copia_sedes = (ArrayList<Sede>) sedes.clone();
         label:
         while (true){
             System.out.println("1. De A-Z");
@@ -14,7 +15,7 @@ public class OrdenSedes {
             System.out.println("0. Atrás");
             String eleccion = input.next();
             ArrayList<String> nombres = new ArrayList<>();
-            for(Sede sede : sedes){
+            for(Sede sede : copia_sedes){
                 nombres.add(sede.nombre);
             }
             switch (eleccion) {

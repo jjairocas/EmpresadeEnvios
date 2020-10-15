@@ -42,8 +42,22 @@ public class Busqueda {
                 case "2":  //...Buscar en Sedes
                     BusquedaSedes.buscar(CRUDSedes.sedes);
                     label2:
-                   // while
-
+                    while (true) {
+                        String eleccion_orden = Menus.menuOrdenEmpresas();
+                        switch (eleccion_orden) {
+                            case "1":  //ordenar alfabeticamente
+                                OrdenSedes.ordenarAlfabeticamente(CRUDSedes.sedes);
+                                break;
+                            case "2":  // ordenar por Por cantidad de sedes
+                                OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
+                                break;
+                            case "3": // ordenar Por cantidad de centros logísticos
+                                OrdenEmpresas.ordenarPorCentrosLog(CRUDEmpresas.empresas);
+                                break;
+                            case "0": // Atrás
+                                break label2;
+                        }
+                    }
                     break;
                 case "3":  //...Buscar en Centros logisticos
                     BusquedaCentrosLogisticos.buscar(CRUDCentrosLog.centros_logisticos);
