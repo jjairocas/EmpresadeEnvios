@@ -6,8 +6,8 @@ Integrantes:
 Cristan      
 correo:
 
-Jhon         
-correo:
+Jhon Jairo Castaño Ruiz       
+correo:jjcastan@unal.edu.co
 
 Carlos       
 correo:cnhurtadom@unal.edu.co
