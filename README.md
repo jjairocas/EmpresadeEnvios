@@ -3,8 +3,8 @@ Empresa de Envios
 
 Integrantes:
 
-Cristan      
-correo:
+Cristan Giraldo Villegas
+correo: cgiraldo@unal.edu.co       
 
 Jhon Jairo Castaño Ruiz       
 correo:jjcastan@unal.edu.co
