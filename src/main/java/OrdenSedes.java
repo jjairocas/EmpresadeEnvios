@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
+
 
 public class OrdenSedes {
-    /*
-    public static void ordenarAlfabeticamente(ArrayList<EmpresaEnvio> empresas){
+    public static Scanner input=new Scanner(System.in);
+
+    public static void ordenarAlfabeticamente(ArrayList<Sede> sedes){
         label:
         while (true){
             System.out.println("1. De A-Z");
@@ -11,8 +14,8 @@ public class OrdenSedes {
             System.out.println("0. Atrás");
             String eleccion = input.next();
             ArrayList<String> nombres = new ArrayList<>();
-            for(EmpresaEnvio empresa : empresas){
-                nombres.add(empresa.nombre);
+            for(Sede sede : sedes){
+                nombres.add(sede.nombre);
             }
             switch (eleccion) {
                 case "1":  //ordenar de A-Z
@@ -34,9 +37,9 @@ public class OrdenSedes {
 
     }
 
-     */
-/*
-    public static void ordenarPorSedes(ArrayList<EmpresaEnvio> empresas){
+
+
+  /*  public static void ordenarPorSedes(ArrayList<EmpresaEnvio> empresas){
         ArrayList<EmpresaEnvio> copia_empresas = (ArrayList<EmpresaEnvio>) empresas.clone();
         while (true){
             System.out.println("1. De menor a mayor");
@@ -86,7 +89,6 @@ public class OrdenSedes {
                     break;
             }
         }
-    }
+    }*/
 
- */
 }

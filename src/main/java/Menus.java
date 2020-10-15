@@ -92,10 +92,18 @@ public class Menus {
         System.out.println("1.Alfabeticamente");
         System.out.println("2.Por cantidad de sedes");
         System.out.println("3.Por cantidad de centros logísticos");
-        System.out.println("4.Por cantidad de Puntos de atencion");
-        System.out.println("5.Por cantidad de Empleados");
-        System.out.println("6.Por cantidad de Clientes");
-        System.out.println("7.Por cantidad de Paquetes registrados");
+        System.out.println("0.Atrás");
+        opcion = input.next();
+        return opcion;
+    }
+    public static String menuOrdensedes(){
+        String opcion;
+        System.out.println("___________________________________________");
+        System.out.println("SELECCIONE El CRITERIO PARA ORDENAR :");
+        System.out.println();
+        System.out.println("1.Alfabeticamente");
+        System.out.println("2.Por cantidad de sedes");
+        System.out.println("3.Por cantidad de centros logísticos");
         System.out.println("0.Atrás");
         opcion = input.next();
         return opcion;

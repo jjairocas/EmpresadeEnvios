@@ -32,22 +32,7 @@ public class Busqueda {
                                 OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
                                 break;
                             case "3": // ordenar Por cantidad de centros logísticos
-
-                                break;
-                            case "4": // ordenar Por cantidad de Puntos de atencion
-
-                                break;
-                            case "5": // ordenar Por cantidad de Empleados
-                                //ESTE SE PUEDE BORRAR
-
-                                break;
-                            case "6": // Por cantidad de Clientes
-                                //ESTE SE PUEDE BORRAR
-
-                                break;
-                            case "7": // Por cantidad de Paquetes registrados
-                                //ESE SE PUEDE BORRAR
-
+                                OrdenEmpresas.ordenarPorCentrosLog(CRUDEmpresas.empresas);
                                 break;
                             case "0": // Atrás
                                 break label1;
@@ -55,21 +40,44 @@ public class Busqueda {
                     }
                     break;
                 case "2":  //...Buscar en Sedes
+                    BusquedaSedes.buscar(CRUDSedes.sedes);
+                    label2:
+                   // while
 
                     break;
                 case "3":  //...Buscar en Centros logisticos
-
+                    BusquedaCentrosLogisticos.buscar(CRUDCentrosLog.centros_logisticos);
+                    label3:
+                    while (true) {
+                        String eleccion_orden = Menus.menuOrdenEmpresas();
+                        switch (eleccion_orden) {
+                            case "1":  //ordenar alfabeticamente
+                                OrdenCentroLogistico.ordenarAlfabeticamente(CRUDCentrosLog.centros_logisticos);
+                                break;
+                            case "2":  // ordenar por Por cantidad de sedes
+                                OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
+                                break;
+                            case "3": // ordenar Por cantidad de centros logísticos
+                                OrdenEmpresas.ordenarPorCentrosLog(CRUDEmpresas.empresas);
+                                break;
+                            case "0": // Atrás
+                                break label3;
+                        }
+                    }
                     break;
                 case "4":  //... Buscar en Puntos de atencion
+                    BusquedaPuntosAtencion.buscar(CRUDPuntosAtencion.puntos_atencion);
 
                     break;
                 case "5":  //... Buscar en Empleados
+                    BusquedaEmpleados.buscar(CRUDEmpleados.empleados);
 
                     break;
                 case "6":  //...  Buscar en Clientes
-
+                    BusquedaClientes.buscar(CRUDClientes.clientes);
                     break;
                 case "7":  //... Buscar en Paquetes
+                    BusquedaPaquetes.buscar(CRUDPaquetes.paquetes);
 
                     break;
                 case "0":
