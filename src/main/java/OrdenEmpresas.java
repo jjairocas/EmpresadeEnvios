@@ -6,6 +6,7 @@ public class OrdenEmpresas {
     public static Scanner input = new Scanner(System.in);
 
     public static void ordenarAlfabeticamente(ArrayList<EmpresaEnvio> empresas){
+       // ArrayList<EmpresaEnvio> copia_empresas = (ArrayList<EmpresaEnvio>) empresas.clone();
         label:
         while (true){
             System.out.println("1. De A-Z");
@@ -20,13 +21,21 @@ public class OrdenEmpresas {
                 case "1":  //ordenar de A-Z
                     Collections.sort(nombres);
                     for (String nombre : nombres) {
-                        System.out.println("-" + nombre);
+                        for(EmpresaEnvio empresa: empresas){
+                            if(empresa.nombre.equalsIgnoreCase(nombre)){
+                                System.out.println(empresa);
+                            }
+                        }
                     }
                     break;
                 case "2":  //ordenar de Z-A
                     Collections.sort(nombres, Collections.<String>reverseOrder());
                     for (String nombre : nombres) {
-                        System.out.println("-" + nombre);
+                        for(EmpresaEnvio empresa: empresas){
+                            if(empresa.nombre.equalsIgnoreCase(nombre)){
+                                System.out.println(empresa);
+                            }
+                        }
                     }
                     break;
                 case "0":
@@ -38,6 +47,7 @@ public class OrdenEmpresas {
 
     public static void ordenarPorSedes(ArrayList<EmpresaEnvio> empresas){
         ArrayList<EmpresaEnvio> copia_empresas = (ArrayList<EmpresaEnvio>) empresas.clone();
+        label:
         while (true){
             System.out.println("1. De menor a mayor");
             System.out.println("2. De mayor a menor");
@@ -57,13 +67,14 @@ public class OrdenEmpresas {
                     }
                     break;
                 case "0":
-                    break;
+                    break label;
             }
         }
     }
 
     public static void ordenarPorCentrosLog(ArrayList<EmpresaEnvio> empresas){
         ArrayList<EmpresaEnvio> copia_empresas = (ArrayList<EmpresaEnvio>) empresas.clone();
+        label:
         while (true){
             System.out.println("1. De menor a mayor");
             System.out.println("2. De mayor a menor");
@@ -83,7 +94,7 @@ public class OrdenEmpresas {
                     }
                     break;
                 case "0":
-                    break;
+                    break label;
             }
         }
     }

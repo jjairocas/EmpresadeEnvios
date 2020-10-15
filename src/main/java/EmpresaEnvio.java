@@ -18,12 +18,21 @@ public class EmpresaEnvio {
     public EmpresaEnvio() {
     }
 
+    public int cantidadCentroLog(){
+        int cont = 0;
+        for(Sede sede : this.sedes){
+            cont += sede.centros_logisticos.size();
+        }
+        return cont;
+    }
+
     @Override
     public String toString() {
         return " _________________________________" +"\n"+
                 "|Nombre : " + nombre + "\n" +
                 "|Nit    : " + nit +"\n" +
                 "|Cantidad de sedes :" + sedes.size() +"\n" +
+                "|Cantidad de Centros logisticos : " + this.cantidadCentroLog() +"\n" +
                 "|_________________________________";
     }
 
