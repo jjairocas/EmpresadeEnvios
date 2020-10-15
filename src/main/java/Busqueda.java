@@ -29,7 +29,7 @@ public class Busqueda {
                                 OrdenEmpresas.ordenarAlfabeticamente(CRUDEmpresas.empresas);
                                 break;
                             case "2":  // ordenar por Por cantidad de sedes
-
+                                OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
                                 break;
                             case "3": // ordenar Por cantidad de centros logísticos
 
