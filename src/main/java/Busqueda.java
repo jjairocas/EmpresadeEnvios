@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,16 +44,13 @@ public class Busqueda {
                     BusquedaSedes.buscar(CRUDSedes.sedes);
                     label2:
                     while (true) {
-                        String eleccion_orden = Menus.menuOrdenEmpresas();
+                        String eleccion_orden = Menus.menuOrdensedes();
                         switch (eleccion_orden) {
                             case "1":  //ordenar alfabeticamente
                                 OrdenSedes.ordenarAlfabeticamente(CRUDSedes.sedes);
                                 break;
-                            case "2":  // ordenar por Por cantidad de sedes
-                                OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
-                                break;
-                            case "3": // ordenar Por cantidad de centros logísticos
-                                OrdenEmpresas.ordenarPorCentrosLog(CRUDEmpresas.empresas);
+                            case "2":  // ordenar por Por cantidad de centros logisticos
+                                OrdenSedes.ordenarPorCentrosLog(CRUDSedes.sedes);
                                 break;
                             case "0": // Atrás
                                 break label2;
@@ -63,16 +61,16 @@ public class Busqueda {
                     BusquedaCentrosLogisticos.buscar(CRUDCentrosLog.centros_logisticos);
                     label3:
                     while (true) {
-                        String eleccion_orden = Menus.menuOrdenEmpresas();
+                        String eleccion_orden = Menus.menuOrdenCentroslog();
                         switch (eleccion_orden) {
                             case "1":  //ordenar alfabeticamente
                                 OrdenCentroLogistico.ordenarAlfabeticamente(CRUDCentrosLog.centros_logisticos);
                                 break;
-                            case "2":  // ordenar por Por cantidad de sedes
-                                OrdenEmpresas.ordenarPorSedes(CRUDEmpresas.empresas);
+                            case "2":  // ordenar por Por cantidad de puntos de atencion
+                                OrdenCentroLogistico.ordenarPorPuntosdeAtencion(CRUDCentrosLog.centros_logisticos);
                                 break;
-                            case "3": // ordenar Por cantidad de centros logísticos
-                                OrdenEmpresas.ordenarPorCentrosLog(CRUDEmpresas.empresas);
+                            case "3": // ordenar Por cantidad de empleados
+                                OrdenCentroLogistico.ordenarPorEmpleados(CRUDCentrosLog.centros_logisticos);
                                 break;
                             case "0": // Atrás
                                 break label3;
@@ -81,11 +79,26 @@ public class Busqueda {
                     break;
                 case "4":  //... Buscar en Puntos de atencion
                     BusquedaPuntosAtencion.buscar(CRUDPuntosAtencion.puntos_atencion);
-
+                    Label4:
+                    while(true){
+                        String eleccion_orden = Menus.menuOrdenPuntosAtencion();
+                        switch (eleccion_orden) {
+                            case "1":
+                                OrdenPuntosdeAtencion.ordenarAlfabeticamente(CRUDPuntosAtencion.puntos_atencion);
+                                break;
+                            case "2":
+                                OrdenPuntosdeAtencion.ordenarPorPaquetes(CRUDPuntosAtencion.puntos_atencion);
+                                break;
+                            case "3":
+                                OrdenPuntosdeAtencion.ordenarPorClientes(CRUDPuntosAtencion.puntos_atencion);
+                                break;
+                            case "0":
+                                break Label4;
+                        }
+                    }
                     break;
                 case "5":  //... Buscar en Empleados
                     BusquedaEmpleados.buscar(CRUDEmpleados.empleados);
-
                     break;
                 case "6":  //...  Buscar en Clientes
                     BusquedaClientes.buscar(CRUDClientes.clientes);

@@ -39,6 +39,9 @@ public class BusquedaClientes {
                         }
                         System.out.println("No existe un cliente con este nombre");
                     }
+                    else if(eleccion.equals("0")){
+                        break;
+                    }
                 }
             }
 
@@ -67,6 +70,9 @@ public class BusquedaClientes {
                         }
                         System.out.println("No existe un cliente con esta cedula");
                     }
+                    else if(eleccion.equals("0")){
+                        break;
+                    }
                 }
             }
             else if (opcion.equals("3")){
@@ -94,6 +100,9 @@ public class BusquedaClientes {
                         }
                         System.out.println("No existe un cliente con este correo");
                     }
+                    else if(eleccion.equals("0")){
+                        break;
+                    }
                 }
             }
 
@@ -102,6 +111,25 @@ public class BusquedaClientes {
                 for(Cliente cliente : clientes){
                     System.out.println(cliente);
                 }
+
+
+                Label5:
+                while(true){
+                    System.out.println("1. ordenar alfabeticamente");
+                    System.out.println("0. atras");
+                    String eleccion_orden = input.next();
+                    switch (eleccion_orden){
+                        case "1":
+                            OrdenClientes.ordenarAlfabeticamente(CRUDClientes.clientes);
+                            break;
+                        case "0":
+                            break Label5;
+                    }
+                }
+
+                break;
+
+
             }
 
             else if (opcion.equals("5")){

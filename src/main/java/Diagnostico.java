@@ -23,24 +23,25 @@ public class Diagnostico {
             }
         }
 
-        System.out.println("+SEDES SIN CENTROS LOGÍSTICOS");
+        System.out.println("SEDES SIN CENTROS LOGÍSTICOS");
         for(Sede sede:sedes){
             if(sede.centros_logisticos.isEmpty()){
                 System.out.println(sede);
             }
         }
 
-        System.out.println("+CENTROS LOGÍSTICOS SIN PUNTOS DE ATENCIÓN");
+        System.out.println("CENTROS LOGÍSTICOS SIN PUNTOS DE ATENCIÓN");
         for(C_logistico centrolog:centros_logisticos){
             if(centrolog.puntos_atencion.isEmpty()){
                 System.out.println(centrolog);
             }
         }
-        System.out.println("+CENTROS LOGÍSTICOS SIN EMPLEADOS");
+        System.out.println("CENTROS LOGÍSTICOS SIN EMPLEADOS");
         for(C_logistico centrolog:centros_logisticos){
             if(centrolog.empleados.isEmpty()){
                 System.out.println(centrolog);
             }
         }
+
     }
 }

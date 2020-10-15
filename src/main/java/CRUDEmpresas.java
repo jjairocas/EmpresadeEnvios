@@ -14,14 +14,10 @@ public class CRUDEmpresas {
     }
 
     public static void crearEmpresa(){
+
         System.out.print("Nombre  de la empresa:");
         String nombre = input.next();
-        for(EmpresaEnvio empresa : empresas){
-            if(empresa.nombre.equalsIgnoreCase(nombre)){
-                System.out.println("Lo sentimos,ya existe una empresa con ese nombre");
-                return;
-            }
-        }
+
         System.out.print("Nit: ");
         String nit = input.next();
         for (EmpresaEnvio empresa : empresas){

@@ -38,6 +38,9 @@ public class BusquedaPaquetes {
                         }
                         System.out.println("No existe un paquete con este codigo");
                     }
+                    else if(eleccion.equals("0")){
+                        return;
+                    }
                 }
             }
             else if (opcion.equals("2")){
@@ -45,6 +48,25 @@ public class BusquedaPaquetes {
                 for(Paquete paquete : paquetes){
                     System.out.println(paquete);
                 }
+
+
+                Label5:
+                while(true){
+                    System.out.println("1. ordenar alfabeticamente");
+                    System.out.println("0. atras");
+                    String eleccion_orden = input.next();
+                    switch (eleccion_orden){
+                        case "1":
+                            OrdenPaquete.ordenarAlfabeticamente(CRUDPaquetes.paquetes);
+                            break;
+                        case "0":
+                            break Label5;
+                    }
+                }
+
+                break;
+
+
             }
 
             else if (opcion.equals("0")){

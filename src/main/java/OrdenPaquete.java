@@ -8,8 +8,8 @@ public class OrdenPaquete {
     public static void ordenarAlfabeticamente(ArrayList<Paquete> Paquetes) {
         label:
         while (true) {
-            System.out.println("1. De A-Z");
-            System.out.println("2. De Z-A");
+            System.out.println("1. Ascender numericamente");
+            System.out.println("2. Descender numericamente");
             System.out.println("0. Atrás");
             String eleccion = input.next();
             ArrayList<String> codigos = new ArrayList<>();
@@ -17,16 +17,24 @@ public class OrdenPaquete {
                 codigos.add(paquete.codigo_paquete);
             }
             switch (eleccion) {
-                case "1":  //ordenar de A-Z
+                case "1":
                     Collections.sort(codigos);
-                    for (String codigo :codigos) {
-                        System.out.println("-" + codigo);
+                    for (String nombre : codigos) {
+                        for(Paquete paquete: Paquetes){
+                            if(paquete.codigo_paquete.equalsIgnoreCase(nombre)){
+                                System.out.println(paquete);
+                            }
+                        }
                     }
                     break;
-                case "2":  //ordenar de Z-A
+                case "2":
                     Collections.sort(codigos, Collections.<String>reverseOrder());
-                    for (String codigo :codigos) {
-                        System.out.println("-" + codigo);
+                    for (String nombre : codigos) {
+                        for(Paquete paquete: Paquetes){
+                            if(paquete.codigo_paquete.equalsIgnoreCase(nombre)){
+                                System.out.println(paquete);
+                            }
+                        }
                     }
                     break;
                 case "0":
@@ -36,30 +44,6 @@ public class OrdenPaquete {
         }
 
     }
-    /*public static void ordenarPorPuntosdeAtencion(ArrayList<P_atencion> PuntosdeAtencion){
-        ArrayList<EmpresaEnvio> copia_empresas = (ArrayList<EmpresaEnvio>) empresas.clone();
-        while (true){
-            System.out.println("1. De menor a mayor");
-            System.out.println("2. De mayor a menor");
-            System.out.println("0. Atrás");
-            String opcion = input.next();
-            switch (opcion){
-                case "1": // de menor a mayor
-                    Collections.sort(copia_empresas,new EmpresaComparator("sedes"));
-                    for(EmpresaEnvio empresa : copia_empresas){
-                        System.out.println(empresa);
-                    }
-                    break;
-                case "2": // de mayor a menor
-                    Collections.sort(copia_empresas,new EmpresaComparator("sedes").reversed());
-                    for(EmpresaEnvio empresa : copia_empresas){
-                        System.out.println(empresa);
-                    }
-                    break;
-                case "0":
-                    break;
-            }
-        }
-    }*/
+
 }
 

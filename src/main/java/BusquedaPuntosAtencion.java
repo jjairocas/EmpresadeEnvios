@@ -11,7 +11,7 @@ public class BusquedaPuntosAtencion {
                 System.out.println("SELECCIONE :");
                 System.out.println("1.Codigo");
                 System.out.println("2.Direccion");
-                System.out.println("3.Mostrar todas las sedes");
+                System.out.println("3.Mostrar todas los puntos de atencion");
                 System.out.println("0.Atras");
                 String opcion = input.next();
                 if (opcion.equals("1")) { // Codigo
@@ -76,10 +76,10 @@ public class BusquedaPuntosAtencion {
                     }
 
 
-                } else if (opcion.equals("3")) { // Mostrar todas las sedes
-                    System.out.println("LISTADO DE SEDES: ");
-                    for (P_atencion p_atencion : P_Atencion) {
-                        System.out.println(p_atencion);
+                } else if (opcion.equals("3")) { // Mostrar todos puntos de atencion
+                    System.out.println("LISTADO DE PUNTOS DE ATENCIÓN: ");
+                    for(P_atencion punto : P_Atencion){
+                        System.out.println(punto);
                     }
                     return;
                 } else if (opcion.equals("0")) {

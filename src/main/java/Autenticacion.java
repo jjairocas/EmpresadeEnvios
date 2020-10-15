@@ -99,6 +99,8 @@ public class Autenticacion {
                     break label;
                 case "0":   // Usuario elige cancelar
                     break label;
+                default:
+                    return;
             }
         }
     }
