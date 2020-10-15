@@ -19,11 +19,11 @@ public class Sede {
 
     @Override
     public String toString() {
-        return "____________________________________________" +"\n"+
-                "nombre    :" + nombre +"\n"+
-                "codigo    :" + codigo +"\n"+
-                " Cantidad de centros_logisticos: " + centros_logisticos.size() +"\n"+
-                "____________________________________________";
+        return " _____________________________________________________" +"\n"+
+                "|nombre                         : " + nombre +"\n"+
+                "|codigo                         : " + codigo +"\n"+
+                "|Cantidad de centros_logisticos : " + centros_logisticos.size() +"\n"+
+                "|____________________________________________________";
     }
 
     public static Sede parseSede(JSONObject sede_json){

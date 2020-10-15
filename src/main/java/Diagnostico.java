@@ -16,13 +16,31 @@ public class Diagnostico {
         System.out.println("________________________________________");
         System.out.println("              INFORME");
         System.out.println("________________________________________");
-        System.out.println("* EMPRESAS SIN SEDES");
+        System.out.println("+EMPRESAS SIN SEDES");
         for(EmpresaEnvio empresa: empresas){
             if(empresa.sedes.isEmpty()){
                 System.out.println(empresa);
             }
         }
-        System.out.println("________________________________________");
-        //.....Quedan pendientes los informes para sede, centros log, puntos atencion, clientes y paquetes.
+
+        System.out.println("+SEDES SIN CENTROS LOGÍSTICOS");
+        for(Sede sede:sedes){
+            if(sede.centros_logisticos.isEmpty()){
+                System.out.println(sede);
+            }
+        }
+
+        System.out.println("+CENTROS LOGÍSTICOS SIN PUNTOS DE ATENCIÓN");
+        for(C_logistico centrolog:centros_logisticos){
+            if(centrolog.puntos_atencion.isEmpty()){
+                System.out.println(centrolog);
+            }
+        }
+        System.out.println("+CENTROS LOGÍSTICOS SIN EMPLEADOS");
+        for(C_logistico centrolog:centros_logisticos){
+            if(centrolog.empleados.isEmpty()){
+                System.out.println(centrolog);
+            }
+        }
     }
 }
