@@ -18,17 +18,25 @@ public class BusquedaEmpresas {
                 while (true){
                     String eleccion = Menus.menuAtributoTexto();
                     if(eleccion.equals("1")){ // valor exacto
+                        System.out.println("Ingrese el nommbre de la empresa:");
+                        String nombre_empresa = input.next();
                         for(EmpresaEnvio empresa: empresas){
-                            System.out.println("- "+empresa.nombre);
+                            if(empresa.nombre.equals(nombre_empresa)){
+                                System.out.println(empresa);
+                                return;
+                            }
                         }
-                        return;
+                        System.out.println("No existe un empresa con este nombre");
                     }else if(eleccion.equals("2")){ // valor sin considerar mayúsculas
+                        System.out.println("Ingrese el nommbre de la empresa:");
+                        String nombre_empresa = input.next();
                         for(EmpresaEnvio empresa: empresas){
-                            String nombre = empresa.nombre;
-                            nombre = nombre.toLowerCase();
-                            System.out.println("- "+ nombre);
+                            if(empresa.nombre.equalsIgnoreCase(nombre_empresa)){
+                                System.out.println(empresa);
+                                return;
+                            }
                         }
-                        return;
+                        System.out.println("No existe un empresa con este nombre");
                     }else if(eleccion.equals("0")){ // atras
                         break;
                     }

@@ -5,7 +5,7 @@ public class Busqueda {
 
     public static ArrayList<Paquete> paquetes = CRUDPaquetes.paquetes;
     public static ArrayList<Cliente> clientes = CRUDClientes.clientes;
-    public static  ArrayList<Empleado> empleados = CRUDEmpleados.empleados;
+    public static ArrayList<Empleado> empleados = CRUDEmpleados.empleados;
     public static ArrayList<P_atencion> puntos_atencion = CRUDPuntosAtencion.puntos_atencion;
     public static ArrayList<C_logistico> centros_logisticos = CRUDCentrosLog.centros_logisticos;
     public static ArrayList<Sede> sedes = CRUDSedes.sedes;
@@ -25,7 +25,7 @@ public class Busqueda {
                     while (true) {
                         String eleccion_orden = Menus.menuOrdenEmpresas();
                         switch (eleccion_orden) {
-                            case "1":  //oredenar alfabeticamente
+                            case "1":  //ordenar alfabeticamente
                                 OrdenEmpresas.ordenarAlfabeticamente(CRUDEmpresas.empresas);
                                 break;
                             case "2":  // ordenar por Por cantidad de sedes
