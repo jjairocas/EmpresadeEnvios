@@ -78,12 +78,6 @@ public class BusquedaEmpresas {
                                         return;
                                     }
                                     System.out.println("No se encontró esta empresa con este Nit");
-                            /*for(EmpresaEnvio empresa: empresas){
-                            String nit = empresa.nit;
-                            nit = nit.toLowerCase();
-                            System.out.println("- "+ nit);
-                        }*/
-
                                 }
                                 break;
                             case "0":  // atras
