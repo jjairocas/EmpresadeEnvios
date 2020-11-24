@@ -1,3 +1,5 @@
+package app;
+
 public class Estacion {
     public String nombre;
 

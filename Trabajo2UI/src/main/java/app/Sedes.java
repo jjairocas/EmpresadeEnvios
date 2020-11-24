@@ -1,3 +1,5 @@
+package app;
+
 public class Sedes {
 
     public int codigoSede;

@@ -1,3 +1,5 @@
+package app;
+
 public class Ciudad {
     public String nombre;
     public int poblacion;
