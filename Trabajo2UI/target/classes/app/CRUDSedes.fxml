@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.CRUDSedesController">
+   <children>
+      <Label layoutX="183.0" layoutY="41.0" text="ADMINISTRAR SEDES">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="crearButton" layoutX="232.0" layoutY="94.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="CREAR" />
+      <Button fx:id="editarButton" layoutX="232.0" layoutY="153.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="EDITAR" />
+      <Button fx:id="verButton" layoutX="232.0" layoutY="220.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="VER" />
+      <Button fx:id="eliminarButton" layoutX="232.0" layoutY="288.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="ELIMINAR" />
+      <Button fx:id="volverButton" layoutX="517.0" layoutY="347.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+   </children>
+</AnchorPane>
