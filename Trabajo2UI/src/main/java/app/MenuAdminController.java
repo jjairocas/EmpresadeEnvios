@@ -1,4 +1,4 @@
-package App;
+package app;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
