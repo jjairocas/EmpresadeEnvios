@@ -3,9 +3,13 @@ package app;
 import org.jgrapht.Graph;
 import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleGraph;
+import org.jgrapht.traverse.DepthFirstIterator;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -17,25 +21,25 @@ public class Main {
     public static Hashtable<String, CentroLogistico> misCentroLogistico = new Hashtable<>();
     public static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        misEmpresas.put("coordinadora", new Empresa(1,"coordinadora",12345));
-        misEmpresas.put("envia", new Empresa(2,"envia",12346));
-        misEmpresas.put("tcc", new Empresa(3,"tcc",12347));
+        misEmpresas.put("1", new Empresa(1, "coordinadora", 12345));
+        misEmpresas.put("2", new Empresa(2, "envia", 12346));
+        misEmpresas.put("3", new Empresa(3, "tcc", 12347));
 
-        misSedes.put("10", new Sedes(10,"bogota","bogota@coordinadora.com"));
-        misSedes.put("11", new Sedes(11,"medellin","medellin@envia.com"));
-        misSedes.put("12", new Sedes(12,"cali","cali@tcc.com"));
+        misSedes.put("10", new Sedes(10, "bogota", "bogota@coordinadora.com"));
+        misSedes.put("11", new Sedes(11, "medellin", "medellin@envia.com"));
+        misSedes.put("12", new Sedes(12, "cali", "cali@tcc.com"));
 
-        misCentroLogistico.put("1", new CentroLogistico(1, "CLchapillin","chapillin"));
-        misCentroLogistico.put("2", new CentroLogistico(2, "CLlaureles","laureles"));
-        misCentroLogistico.put("4", new CentroLogistico(4, "CLpoblado","poblado"));
-        misCentroLogistico.put("3", new CentroLogistico(3, "CLlimonar","limonar"));
+        misCentroLogistico.put("1", new CentroLogistico(1, "CLchapillin", "chapillin"));
+        misCentroLogistico.put("2", new CentroLogistico(2, "CLlaureles", "laureles"));
+        misCentroLogistico.put("4", new CentroLogistico(4, "CLpoblado", "poblado"));
+        misCentroLogistico.put("3", new CentroLogistico(3, "CLlimonar", "limonar"));
 
 
-        grafo.addVertex(misEmpresas.get("coordinadora"));
-        grafo.addVertex(misEmpresas.get("envia"));
-        grafo.addVertex(misEmpresas.get("tcc"));
+        grafo.addVertex(misEmpresas.get("1"));
+        grafo.addVertex(misEmpresas.get("2"));
+        grafo.addVertex(misEmpresas.get("3"));
 
         grafo.addVertex(misSedes.get("10"));
         grafo.addVertex(misSedes.get("11"));
@@ -46,16 +50,15 @@ public class Main {
         grafo.addVertex(misCentroLogistico.get("3"));
         grafo.addVertex(misCentroLogistico.get("4"));
 
-        
 
-        grafo.addEdge(misEmpresas.get("coordinadora"),misSedes.get("10"));
-        grafo.addEdge(misEmpresas.get("envia"),misSedes.get("11"));
-        grafo.addEdge(misEmpresas.get("tcc"),misSedes.get("12"));
+        grafo.addEdge(misEmpresas.get("1"), misSedes.get("10"));
+        grafo.addEdge(misEmpresas.get("2"), misSedes.get("11"));
+        grafo.addEdge(misEmpresas.get("3"), misSedes.get("12"));
 
-        grafo.addEdge(misSedes.get("10"),misCentroLogistico.get("1"));
-        grafo.addEdge(misSedes.get("11"),misCentroLogistico.get("2"));
-        grafo.addEdge(misSedes.get("11"),misCentroLogistico.get("4"));
-        grafo.addEdge(misSedes.get("12"),misCentroLogistico.get("3"));
+        grafo.addEdge(misSedes.get("10"), misCentroLogistico.get("1"));
+        grafo.addEdge(misSedes.get("11"), misCentroLogistico.get("2"));
+        grafo.addEdge(misSedes.get("11"), misCentroLogistico.get("4"));
+        grafo.addEdge(misSedes.get("12"), misCentroLogistico.get("3"));
 
         grafo.addEdge(misCentroLogistico.get("2"), misCentroLogistico.get("4"));
 
@@ -66,29 +69,301 @@ public class Main {
         //ver
 
 
-
-
-
-
-
-
-
-
-
         System.out.println("- - - V - - - ");
         ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
-        for (Object objeto : vertices){
+        for (Object objeto : vertices) {
             System.out.println(objeto);
         }
         System.out.println();
         System.out.println("- - - - A - - - ");
 
         ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
-        for (DefaultEdge arista : aristas){
+        for (DefaultEdge arista : aristas) {
             System.out.println(arista);
         }
 
+//        editarEmpresa();
+        editarSede();
+//        editarCentroLog();
     }
+
+
+    public static void editarEmpresa() {
+        label:
+        while (true) {
+            System.out.println("Edición empresa");
+            System.out.println("1. Seleccionar por Nombre");
+            System.out.println("2. Seleccionar por Código");
+            System.out.println("0. Atrás");
+            String opcion = input.next();
+
+            switch (opcion) {
+                case "1":
+                    System.out.print("Nombre de la Empresa : "); // Editar por nombre de la empresa
+
+                    String nombre = input.next();
+                    for (Empresa empresa : misEmpresas.values()) {
+                        if (empresa.nombreDelaEmpresa.equalsIgnoreCase(nombre)) {
+                            cambiarDatosEmpresa(empresa);
+                            return;
+                        }
+                    }
+                    System.out.println("No existe empresa con ese nombre");
+                    break;
+                case "2":  // editar por Código
+                    System.out.print("Código de la Empresa : "); // Editar por código de la empresa
+
+                    Integer codigo = input.nextInt();
+                    for (Empresa empresa : misEmpresas.values()) {
+                        if (empresa.codigoEmpresa == codigo) {
+                            cambiarDatosEmpresa(empresa);
+                            return;
+                        }
+                    }
+                    System.out.println("No hay empresas registradas con ese Código");
+                    break;
+                case "0":
+                    break label;
+            }
+        }
+
+    }
+
+    public static void cambiarDatosEmpresa(Empresa empresa) {
+        System.out.println("Nombre: " + empresa.nombreDelaEmpresa);
+        System.out.println("¿Quiere cambiar el nombre? Ingrese Y o N");
+        String eleccion1 = input.next();
+        if (eleccion1.equalsIgnoreCase("Y")) {
+            System.out.print("Nuevo nombre:");
+            empresa.nombreDelaEmpresa = input.next();
+        }
+        System.out.println("Código: " + empresa.codigoEmpresa);
+        System.out.println("¿Quiere cambiar el Código? Ingrese Y o N");
+        String eleccion2 = input.next();
+        if (eleccion2.equalsIgnoreCase("Y")) {
+            misEmpresas.remove("" + empresa.codigoEmpresa);
+            System.out.print("Nuevo Código:");
+            empresa.codigoEmpresa = input.nextInt();
+            String nuevoCodigo = "" + empresa.codigoEmpresa;
+            misEmpresas.put(nuevoCodigo, new Empresa(empresa.codigoEmpresa, empresa.nombreDelaEmpresa, empresa.numeroTelefonico));
+        }
+        System.out.println("Teléfono: " + empresa.numeroTelefonico);
+        System.out.println("¿Quiere cambiar el Teléfono? Ingrese Y o N");
+        String eleccion3 = input.next();
+        if (eleccion3.equalsIgnoreCase("Y")) {
+            System.out.print("Nuevo Teléfono:");
+            empresa.numeroTelefonico = input.nextInt();
+            misEmpresas.put("" + empresa.codigoEmpresa, new Empresa(empresa.codigoEmpresa, empresa.nombreDelaEmpresa, empresa.numeroTelefonico));
+        }
+        System.out.println("¡CAMBIOS REALIZADOS CON ÉXITO!");
+        System.out.println(misEmpresas);
+
+
+        System.out.println("- - - V - - - ");
+        ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
+        for (Object objeto : vertices) {
+            System.out.println(objeto);
+        }
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+
+    public static void editarSede() {
+        label:
+        while (true) {
+            System.out.println("Edición Sede");
+            System.out.println("1. Seleccionar por Nombre");
+            System.out.println("2. Seleccionar por Código");
+            System.out.println("0. Atrás");
+            String opcion = input.next();
+
+            switch (opcion) {
+                case "1":
+                    System.out.print("Nombre de la Sede : "); // Editar por nombre de la sede
+
+                    String nombre = input.next();
+                    for (Sedes sede : misSedes.values()) {
+                        if (sede.nombreSede.equalsIgnoreCase(nombre)) {
+//                            cambiarDatosSede(sede);
+                            editarConexionSede_Centro(sede);
+                            return;
+                        }
+                    }
+                    System.out.println("No existe sede con ese nombre");
+                    break;
+                case "2":  // editar por Código
+                    System.out.print("Código de la sede : "); // Editar por código de la sede
+
+                    Integer codigo = input.nextInt();
+                    for (Sedes sede : misSedes.values()) {
+                        if (sede.codigoSede == codigo) {
+                            cambiarDatosSede(sede);
+                            editarConexionSede_Centro(sede);
+                            return;
+                        }
+                    }
+                    System.out.println("No hay sedes registradas con ese código");
+                    break;
+                case "0":
+                    break label;
+            }
+        }
+
+    }
+
+    public static void cambiarDatosSede(Sedes sedes) {
+        System.out.println("Nombre: " + sedes.nombreSede);
+        System.out.println("¿Quiere cambiar el nombre? Ingrese Y o N");
+        String eleccion1 = input.next();
+        if (eleccion1.equalsIgnoreCase("Y")) {
+            System.out.print("Nuevo nombre:");
+            sedes.nombreSede = input.next();
+        }
+        System.out.println("Código: " + sedes.codigoSede);
+        System.out.println("¿Quiere cambiar el Código? Ingrese Y o N");
+        String eleccion2 = input.next();
+        if (eleccion2.equalsIgnoreCase("Y")) {
+            misSedes.remove("" + sedes.codigoSede);
+            System.out.print("Nuevo código:");
+            sedes.codigoSede = input.nextInt();
+            String nuevoCodigo = "" + sedes.codigoSede;
+            misSedes.put(nuevoCodigo, new Sedes(sedes.codigoSede, sedes.nombreSede, sedes.correoSede));
+        }
+        System.out.println("Correo: " + sedes.correoSede);
+        System.out.println("¿Quiere cambiar el Correo? Ingrese Y o N");
+        String eleccion3 = input.next();
+        if (eleccion3.equalsIgnoreCase("Y")) {
+            System.out.print("Nuevo Correo:");
+            sedes.correoSede = input.next();
+            misSedes.put("" + sedes.codigoSede, new Sedes(sedes.codigoSede, sedes.nombreSede, sedes.correoSede));
+        }
+        System.out.println("¡CAMBIOS REALIZADOS CON ÉXITO!");
+        System.out.println(misSedes);
+    }
+
+
+    public static void editarConexionSede_Centro(Sedes origen) {
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+        ArrayList<Object> centrosSinEnlace = new ArrayList<>(grafo.vertexSet());
+        centrosSinEnlace.remove(origen);
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> centrosAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (centrosAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+        for (Object centro : centrosAdyacentes) {
+            centrosSinEnlace.remove(centro);
+        }
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Centros adyacentes sin enlace para editar conexión");
+        for (int i = 0; i < centrosSinEnlace.size(); i++) {
+            if (misCentroLogistico.contains(centrosSinEnlace.get(i))) {
+                System.out.println(i + 1 + ", " + centrosSinEnlace.get(i));
+            }
+        }
+        System.out.println("Ingrece el índice del menú correspondiente al centro log, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= centrosSinEnlace.size() && indice > 0) {
+            Object destino = centrosSinEnlace.get(indice - 1);
+            grafo.addEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+
+    public static void editarCentroLog() {
+        label:
+        while (true) {
+            System.out.println("Edición Centro Logístico");
+            System.out.println("1. Seleccionar por Nombre");
+            System.out.println("2. Seleccionar por Código");
+            System.out.println("0. Atrás");
+            String opcion = input.next();
+
+            switch (opcion) {
+                case "1":
+                    System.out.print("Nombre del Centro Logístico : "); // Editar por nombre del Centro Logístico
+
+                    String nombre = input.next();
+                    for (CentroLogistico centro : misCentroLogistico.values()) {
+                        if (centro.nombreCentroLogistico.equalsIgnoreCase(nombre)) {
+                            cambiarDatosCentroLog(centro);
+                            return;
+                        }
+                    }
+                    System.out.println("No existe centro logístico con ese nombre");
+                    break;
+                case "2":  // editar por Código
+                    System.out.print("Código del centro logístico : "); // Editar por código del centro logístico
+
+                    Integer codigo = input.nextInt();
+                    for (CentroLogistico centro : misCentroLogistico.values()) {
+                        if (centro.codigoCentroLogistico == codigo) {
+                            cambiarDatosCentroLog(centro);
+                            return;
+                        }
+                    }
+                    System.out.println("No hay centros logísticos registrados con ese código");
+                    break;
+                case "0":
+                    break label;
+            }
+        }
+
+    }
+
+    public static void cambiarDatosCentroLog(CentroLogistico centro) {
+        System.out.println("Nombre: " + centro.nombreCentroLogistico);
+        System.out.println("¿Quiere cambiar el nombre? Ingrese Y o N");
+        String eleccion1 = input.next();
+        if (eleccion1.equalsIgnoreCase("Y")) {
+            System.out.print("Nuevo nombre:");
+            centro.nombreCentroLogistico = input.next();
+        }
+        System.out.println("Código: " + centro.codigoCentroLogistico);
+        System.out.println("¿Quiere cambiar el Código? Ingrese Y o N");
+        String eleccion2 = input.next();
+        if (eleccion2.equalsIgnoreCase("Y")) {
+            misCentroLogistico.remove("" + centro.codigoCentroLogistico);
+            System.out.print("Nuevo código:");
+            centro.codigoCentroLogistico = input.nextInt();
+            String nuevoCodigo = "" + centro.codigoCentroLogistico;
+            misCentroLogistico.put(nuevoCodigo, new CentroLogistico(centro.codigoCentroLogistico, centro.nombreCentroLogistico, centro.direccionCentroLogistico));
+        }
+        System.out.println("Dirección: " + centro.direccionCentroLogistico);
+        System.out.println("¿Quiere cambiar la Dirección? Ingrese Y o N");
+        String eleccion3 = input.next();
+        if (eleccion3.equalsIgnoreCase("Y")) {
+            System.out.print("Nueva dirección:");
+            centro.direccionCentroLogistico = input.next();
+            misCentroLogistico.put("" + centro.codigoCentroLogistico, new CentroLogistico(centro.codigoCentroLogistico, centro.nombreCentroLogistico, centro.direccionCentroLogistico));
+        }
+        System.out.println("¡CAMBIOS REALIZADOS CON ÉXITO!");
+        System.out.println(misCentroLogistico);
+    }
+
+
 }
 
 /*
