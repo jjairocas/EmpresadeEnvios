@@ -62,12 +62,21 @@ public class Main {
 
 
         while (true) {
-            //crearNuevoVertice();
-            editarSede();
-            System.out.println("- - - V - - - ");
+            crearNuevoVertice();
+            //editarSede();
+            //editarCentroLog();
+            //editarEmpresa();
+            borrarVertice();
             ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
             for (Object objeto : vertices) {
                 System.out.println(objeto);
+            }
+            System.out.println();
+            System.out.println("- - - - A - - - ");
+
+            ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+            for (DefaultEdge arista : aristas){
+                System.out.println(arista);
             }
 
         }
@@ -85,13 +94,11 @@ public class Main {
         if (option == 1) {
             int codigoEmpresa = input.nextInt();
 
-            for (Empresa empresa : misEmpresas.values()) {
-                if (empresa.codigoEmpresa == codigoEmpresa) {
-                    System.out.println("Ya existe una empresa con este codigo");
-                    System.out.println();
-                    return;
-                }
+            if (misEmpresas.containsKey(codigoEmpresa)){
+                System.out.println("Ya existe una empresa con este codigo");
+                return;
             }
+
 
 
             String nombreEmpresa = input.next();
@@ -105,12 +112,9 @@ public class Main {
         } else if (option == 2) {
             int codigoSede = input.nextInt();
 
-            for (Sedes sede : misSedes.values()) {
-                if (sede.codigoSede == codigoSede) {
-                    System.out.println("Ya existe una sede con este codigo");
-                    System.out.println();
-                    return;
-                }
+            if (misSedes.containsKey(codigoSede)){
+                System.out.println("Ya existe una sede con este codigo");
+                return;
             }
 
             String nombreSede = input.next();
@@ -149,6 +153,59 @@ public class Main {
         }
     }
 
+    public static void borrarVertice() {
+
+        //MI REY, ESTO TODAVIA NO FUNCIONA +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        System.out.println("Escriba el tipo de vertice que va a borrar");
+        System.out.println("1. Empresa");
+        System.out.println("2. Sede");
+        System.out.println("3. Centro Logistico");
+        System.out.println("0. atras");
+
+        int option = input.nextInt();
+
+        if (option == 1) {
+            int codigoEmpresa = input.nextInt();
+
+            if(!misEmpresas.containsKey(codigoEmpresa)){
+                System.out.println("No existe una empresa con este codigo");
+            }
+
+            misEmpresas.remove(codigoEmpresa);
+            ArrayList<Object> empresasSinEnlaces = new ArrayList<>(grafo.vertexSet());
+            empresasSinEnlaces.remove(misEmpresas.get(codigoEmpresa));
+
+
+        } else if (option == 2) {
+
+            int codigoSede = input.nextInt();
+
+            if(!misSedes.containsKey(codigoSede)){
+                System.out.println("No existe una sede con este codigo");
+            }
+
+            misSedes.remove(codigoSede);
+            grafo.removeVertex(misSedes.get(codigoSede));
+
+        } else if (option == 3) {
+
+            int codigoCentro = input.nextInt();
+
+            if(!misCentroLogistico.containsKey(codigoCentro)){
+                System.out.println("No existe una centro con este codigo");
+            }
+
+            misCentroLogistico.remove(codigoCentro);
+            grafo.removeVertex(misCentroLogistico.get(codigoCentro));
+
+        } else if (option == 0) {
+            return;
+        }
+    }
+
+
 
     public static void editarEmpresa() {
         label:
@@ -178,7 +235,9 @@ public class Main {
                     Integer codigo = input.nextInt();
                     for (Empresa empresa : misEmpresas.values()) {
                         if (empresa.codigoEmpresa == codigo) {
-                            cambiarDatosEmpresa(empresa);
+                            //cambiarDatosEmpresa(empresa);
+                            //editarConexionEmpresa_Sede(empresa);
+                            borrarConexionEmpresa(empresa);
                             return;
                         }
                     }
@@ -234,6 +293,87 @@ public class Main {
         }
     }
 
+    public static void editarConexionEmpresa_Sede(Empresa origen) {
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+        ArrayList<Object> empresasSinEnlaces = new ArrayList<>(grafo.vertexSet());
+        empresasSinEnlaces.remove(origen);
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> empresasAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (empresasAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+        for (Object centro : empresasAdyacentes) {
+            empresasSinEnlaces.remove(centro);
+        }
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Centros adyacentes sin enlace para editar conexión");
+        for (int i = 0; i < empresasSinEnlaces.size(); i++) {
+            if (misSedes.contains(empresasSinEnlaces.get(i))) {
+                System.out.println(i + 1 + ", " + empresasSinEnlaces.get(i));
+            }
+        }
+        System.out.println("Ingrece el índice del menú correspondiente al centro log, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= empresasSinEnlaces.size() && indice > 0) {
+            Object destino = empresasSinEnlaces.get(indice - 1);
+            grafo.addEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+    public static void borrarConexionEmpresa(Empresa origen) {
+
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> empresasAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (empresasAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Sedes adyacentes con enlace para borrar conexión");
+        for (int i = 0; i < empresasAdyacentes.size(); i++) {
+            System.out.println(i + 1 + ", " + empresasAdyacentes.get(i));
+        }
+
+        System.out.println("Ingrece el índice del menú correspondiente a la conexion a eliminar, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= empresasAdyacentes.size() && indice > 0) {
+            Object destino = empresasAdyacentes.get(indice - 1);
+            grafo.removeEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
 
     public static void editarSede() {
         label:
@@ -251,8 +391,10 @@ public class Main {
                     String nombre = input.next();
                     for (Sedes sede : misSedes.values()) {
                         if (sede.nombreSede.equalsIgnoreCase(nombre)) {
-//                            cambiarDatosSede(sede);
-                            editarConexionSede_Centro(sede);
+                           //cambiarDatosSede(sede);
+                            //editarConexionSede_Centro(sede);
+                            //editarConexionSede_Empresa(sede);
+                            //borrarConexionSede(sede);
                             return;
                         }
                     }
@@ -352,6 +494,89 @@ public class Main {
         }
     }
 
+    public static void editarConexionSede_Empresa(Sedes origen) {
+
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+        ArrayList<Object> empresasSinEnlace = new ArrayList<>(grafo.vertexSet());
+        empresasSinEnlace.remove(origen);
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> empresasAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (empresasAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la empresa " + origen);
+        }
+
+        for (Object centro : empresasAdyacentes) {
+            empresasSinEnlace.remove(centro);
+        }
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Empresas adyacentes sin enlace para editar conexión");
+        for (int i = 0; i < empresasSinEnlace.size(); i++) {
+            if (misEmpresas.contains(empresasSinEnlace.get(i))) {
+                System.out.println(i + 1 + ", " + empresasSinEnlace.get(i));
+            }
+        }
+        System.out.println("Ingrece el índice del menú correspondiente a la empresa, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= empresasSinEnlace.size() && indice > 0) {
+            Object destino = empresasSinEnlace.get(indice - 1);
+            grafo.addEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+    public static void borrarConexionSede(Sedes origen) {
+
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> sedesAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (sedesAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Sedes adyacentes con enlace para borrar conexión");
+        for (int i = 0; i < sedesAdyacentes.size(); i++) {
+               System.out.println(i + 1 + ", " + sedesAdyacentes.get(i));
+        }
+
+        System.out.println("Ingrece el índice del menú correspondiente a la conexion a eliminar, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= sedesAdyacentes.size() && indice > 0) {
+            Object destino = sedesAdyacentes.get(indice - 1);
+            grafo.removeEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+
 
     public static void editarCentroLog() {
         label:
@@ -369,7 +594,10 @@ public class Main {
                     String nombre = input.next();
                     for (CentroLogistico centro : misCentroLogistico.values()) {
                         if (centro.nombreCentroLogistico.equalsIgnoreCase(nombre)) {
-                            cambiarDatosCentroLog(centro);
+                            //cambiarDatosCentroLog(centro);
+                            //editarConexionCentroL_CentroL(centro);
+                            //editarConexionCentro_Sede(centro);
+                            borrarConexionCentro(centro);
                             return;
                         }
                     }
@@ -425,76 +653,129 @@ public class Main {
 
     }
 
-}
+    public static void editarConexionCentroL_CentroL(CentroLogistico origen) {
+        System.out.println();
+        System.out.println("Editar relaciones");
 
-/*
+        ArrayList<Object> centrosSinEnlace = new ArrayList<>(grafo.vertexSet());
+        centrosSinEnlace.remove(origen);
 
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> centrosAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
 
-    public static Graph<Object, DefaultEdge> sistema = new SimpleGraph<>(DefaultEdge.class);
-    public static Hashtable<String,Ciudad> misCiudades = new Hashtable<>();
-    public static Hashtable<String,Estacion> misEstaciones = new Hashtable<>();
+//      Compruebo que sí hay estaciones adyacentes
+        if (centrosAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones mi rey " + origen);
+        }
 
+        for (Object centro : centrosAdyacentes) {
+            centrosSinEnlace.remove(centro);
+        }
 
-
-    public static void main(String[] args) {
-
-        misEstaciones.put("A",new Estacion("A"));
-        misEstaciones.put("B",new Estacion("B"));
-        misEstaciones.put("C",new Estacion("C"));
-
-        misCiudades.put("medellin",new Ciudad("medellin",2500000));
-        misCiudades.put("bogota",new Ciudad("bogota",8000000));
-
-        sistema.addVertex(misCiudades.get("medellin"));
-        sistema.addVertex(misCiudades.get("bogota"));
-        sistema.addVertex(misEstaciones.get("A"));
-        sistema.addVertex(misEstaciones.get("B"));
-        sistema.addVertex(misEstaciones.get("C"));
-
-        crearRelaciones();
-
-        ArrayList<Object> nodosAdyacentes = new ArrayList<>(Graphs.neighborListOf(sistema,misCiudades.get("medellin")));
-        for (Object nodo : nodosAdyacentes) {
-
-            if(identificador(nodo,"ciudad")){
-                Ciudad miCiudad = (Ciudad) nodo;
-                System.out.println(miCiudad.poblacion);
-
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Centros adyacentes sin enlace para editar conexión");
+        for (int i = 0; i < centrosSinEnlace.size(); i++) {
+            if (misCentroLogistico.contains(centrosSinEnlace.get(i))) {
+                System.out.println(i + 1 + ", " + centrosSinEnlace.get(i));
             }
         }
+        System.out.println("Ingrece el índice del menú correspondiente al centro log, -1 para cancelar");
+        int indice = input.nextInt();
 
-    }
-    public static boolean identificador(Object obj , String tipoObjeto){
-        if(tipoObjeto.equals("ciudad")){
-            return obj instanceof Ciudad;
-        }else if(tipoObjeto.equals("estacion")){
-            return obj instanceof Estacion;
-        }else{
-            return false;
+        if (indice <= centrosSinEnlace.size() && indice > 0) {
+            Object destino = centrosSinEnlace.get(indice - 1);
+            grafo.addEdge(origen, destino);
         }
-    }
 
-    public static void crearRelaciones(){
-        sistema.addEdge(misCiudades.get("medellin"),misEstaciones.get("A"));
-        sistema.addEdge(misCiudades.get("medellin"),misEstaciones.get("B"));
-        sistema.addEdge(misCiudades.get("bogota"),misEstaciones.get("C"));
-        sistema.addEdge(misCiudades.get("bogota"),misCiudades.get("medellin"));
-    }
-
-}
-
-
-
- System.out.println("- - - V - - - ");
-        ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
-        for (Object objeto : vertices){
-            System.out.println(objeto);
-        }
         System.out.println();
         System.out.println("- - - - A - - - ");
 
         ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
-        for (DefaultEdge arista : aristas){
+        for (DefaultEdge arista : aristas) {
             System.out.println(arista);
         }
-*/
+    }
+
+    public static void editarConexionCentro_Sede(CentroLogistico origen) {
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+        ArrayList<Object> centrosSinEnlace = new ArrayList<>(grafo.vertexSet());
+        centrosSinEnlace.remove(origen);
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> centrosAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (centrosAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+        for (Object centro : centrosAdyacentes) {
+            centrosSinEnlace.remove(centro);
+        }
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Centros adyacentes sin enlace para editar conexión");
+        for (int i = 0; i < centrosSinEnlace.size(); i++) {
+            if (misSedes.contains(centrosSinEnlace.get(i))) {
+                System.out.println(i + 1 + ", " + centrosSinEnlace.get(i));
+            }
+        }
+        System.out.println("Ingrece el índice del menú correspondiente al centro log, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= centrosSinEnlace.size() && indice > 0) {
+            Object destino = centrosSinEnlace.get(indice - 1);
+            grafo.addEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+    public static void borrarConexionCentro(CentroLogistico origen) {
+
+        System.out.println();
+        System.out.println("Editar relaciones");
+
+
+//      Llamo la lista de centros log adyacentes a sede origen
+        ArrayList<Object> centrosAdyacentes = new ArrayList<>(Graphs.neighborListOf(grafo, origen));
+
+//      Compruebo que sí hay estaciones adyacentes
+        if (centrosAdyacentes.size() == 0) {
+            System.out.println("No hay conexiones adyacentes para la sede " + origen);
+        }
+
+
+//      Selecciono uno de los centros adyacentes
+        System.out.println("Sedes adyacentes con enlace para borrar conexión");
+        for (int i = 0; i < centrosAdyacentes.size(); i++) {
+            System.out.println(i + 1 + ", " + centrosAdyacentes.get(i));
+        }
+
+        System.out.println("Ingrece el índice del menú correspondiente a la conexion a eliminar, -1 para cancelar");
+        int indice = input.nextInt();
+
+        if (indice <= centrosAdyacentes.size() && indice > 0) {
+            Object destino = centrosAdyacentes.get(indice - 1);
+            grafo.removeEdge(origen, destino);
+        }
+
+        System.out.println();
+        System.out.println("- - - - A - - - ");
+
+        ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
+        for (DefaultEdge arista : aristas) {
+            System.out.println(arista);
+        }
+    }
+
+
+}
