@@ -62,7 +62,8 @@ public class Main {
 
 
         while (true) {
-            crearNuevoVertice();
+            //crearNuevoVertice();
+            editarSede();
             System.out.println("- - - V - - - ");
             ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
             for (Object objeto : vertices) {
