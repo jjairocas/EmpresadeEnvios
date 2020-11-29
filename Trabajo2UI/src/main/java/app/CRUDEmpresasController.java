@@ -21,4 +21,9 @@ public class CRUDEmpresasController {
     public void volver(ActionEvent event)throws IOException {
         App.setRoot("MenuAdmin");
     }
+    @FXML
+    public void crear(ActionEvent event)throws IOException {
+        App.setRoot("CrearEmpresa");
+    }
+
 }
