@@ -7,33 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="429.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.BusquedaController">
+<AnchorPane prefHeight="507.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.BusquedaController">
    <children>
-      <Label layoutX="246.0" layoutY="22.0" text="BÚSQUEDA">
+      <Label layoutX="246.0" layoutY="14.0" text="BÚSQUEDA">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="80.0" text="Seleccione la entidad a buscar">
+      <Label layoutX="24.0" layoutY="50.0" text="Seleccione la entidad a buscar">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="134.0" text="Seleccione el atributo a buscar">
+      <Label layoutX="23.0" layoutY="91.0" text="Seleccione el atributo a buscar" visible="false">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="182.0" text="Ingrese el valor">
+      <Label layoutX="111.0" layoutY="131.0" text="Ingrese el valor" visible="false">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="211.0" layoutY="77.0" prefHeight="25.0" prefWidth="217.0" />
-      <ChoiceBox layoutX="211.0" layoutY="131.0" prefHeight="25.0" prefWidth="217.0" />
-      <TextField layoutX="211.0" layoutY="179.0" prefHeight="25.0" prefWidth="217.0" />
-      <Button layoutX="367.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Buscar" />
-      <Button fx:id="VolverButton" layoutX="546.0" layoutY="356.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+      <ChoiceBox fx:id="entidadChoiceBox" layoutX="211.0" layoutY="47.0" prefHeight="25.0" prefWidth="217.0" />
+      <ChoiceBox fx:id="atributoEmpresaChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
+      <TextField fx:id="valorTextField" layoutX="211.0" layoutY="128.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
+      <Button layoutX="444.0" layoutY="128.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Buscar" visible="false" />
+      <Button fx:id="VolverButton" layoutX="444.0" layoutY="47.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
+      <ChoiceBox fx:id="atributoSedeChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
+      <ChoiceBox fx:id="atributoCentroChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
    </children>
 </AnchorPane>
