@@ -64,14 +64,14 @@ public class Main {
 
 
         while (true) {
-            crearNuevoVertice();
+//            crearNuevoVertice();
             //editarSede();
-            //editarCentroLog();
+//            editarCentroLog();
             //editarEmpresa();
-//            borrarVertice();
+            borrarVertice();
 //            buscarEmpresa();
 //            buscarSede();
-            buscarCentroLogistico();
+//            buscarCentroLogistico();
             ArrayList<Object> vertices = new ArrayList<>(grafo.vertexSet());
             for (Object objeto : vertices) {
                 System.out.println(objeto);
@@ -80,7 +80,7 @@ public class Main {
             System.out.println("- - - - A - - - ");
 
             ArrayList<DefaultEdge> aristas = new ArrayList<>(grafo.edgeSet());
-            for (DefaultEdge arista : aristas){
+            for (DefaultEdge arista : aristas) {
                 System.out.println(arista);
             }
 
@@ -99,11 +99,10 @@ public class Main {
         if (option == 1) {
             int codigoEmpresa = input.nextInt();
 
-            if (misEmpresas.containsKey(codigoEmpresa)){
+            if (misEmpresas.containsKey(codigoEmpresa)) {
                 System.out.println("Ya existe una empresa con este codigo");
                 return;
             }
-
 
 
             String nombreEmpresa = input.next();
@@ -117,7 +116,7 @@ public class Main {
         } else if (option == 2) {
             int codigoSede = input.nextInt();
 
-            if (misSedes.containsKey(codigoSede)){
+            if (misSedes.containsKey(codigoSede)) {
                 System.out.println("Ya existe una sede con este codigo");
                 return;
             }
@@ -160,9 +159,6 @@ public class Main {
 
     public static void borrarVertice() {
 
-        //MI REY, ESTO TODAVIA NO FUNCIONA +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
         System.out.println("Escriba el tipo de vertice que va a borrar");
         System.out.println("1. Empresa");
         System.out.println("2. Sede");
@@ -174,30 +170,19 @@ public class Main {
         if (option == 1) {
             int codigoEmpresa = input.nextInt();
 
-            if(!misEmpresas.containsKey(codigoEmpresa)){
+            if (!misEmpresas.containsKey(codigoEmpresa)) {
                 System.out.println("No existe una empresa con este codigo");
             }
 
+            grafo.removeVertex(misEmpresas.get(codigoEmpresa));
             misEmpresas.remove(codigoEmpresa);
-//            ArrayList<Object> empresasSinEnlaces = new ArrayList<>(grafo.vertexSet());
-
-            for (Object empresa : grafo.vertexSet()) {
-                if (empresa == misEmpresas.get(codigoEmpresa)) {
-                    grafo.removeVertex(empresa);
-                }
-            }
-
-//            empresasSinEnlaces.remove(misEmpresas.get(codigoEmpresa));
-//            grafo.removeVertex(misEmpresas.get(codigoEmpresa));
-//            Iterator<Object> depthIterator = new DepthFirstIterator<>(empresasSinEnlaces, misEmpresas.get(codigoEmpresa));
-
 
 
         } else if (option == 2) {
 
             int codigoSede = input.nextInt();
 
-            if(!misSedes.containsKey(codigoSede)){
+            if (!misSedes.containsKey(codigoSede)) {
                 System.out.println("No existe una sede con este codigo");
             }
 
@@ -208,7 +193,7 @@ public class Main {
 
             int codigoCentro = input.nextInt();
 
-            if(!misCentroLogistico.containsKey(codigoCentro)){
+            if (!misCentroLogistico.containsKey(codigoCentro)) {
                 System.out.println("No existe una centro con este codigo");
             }
 
@@ -219,7 +204,6 @@ public class Main {
             return;
         }
     }
-
 
 
     public static void editarEmpresa() {
@@ -406,7 +390,7 @@ public class Main {
                     String nombre = input.next();
                     for (Sedes sede : misSedes.values()) {
                         if (sede.nombreSede.equalsIgnoreCase(nombre)) {
-                           //cambiarDatosSede(sede);
+                            //cambiarDatosSede(sede);
                             //editarConexionSede_Centro(sede);
                             //editarConexionSede_Empresa(sede);
                             //borrarConexionSede(sede);
@@ -571,7 +555,7 @@ public class Main {
 //      Selecciono uno de los centros adyacentes
         System.out.println("Sedes adyacentes con enlace para borrar conexión");
         for (int i = 0; i < sedesAdyacentes.size(); i++) {
-               System.out.println(i + 1 + ", " + sedesAdyacentes.get(i));
+            System.out.println(i + 1 + ", " + sedesAdyacentes.get(i));
         }
 
         System.out.println("Ingrece el índice del menú correspondiente a la conexion a eliminar, -1 para cancelar");
@@ -590,7 +574,6 @@ public class Main {
             System.out.println(arista);
         }
     }
-
 
 
     public static void editarCentroLog() {
@@ -815,7 +798,7 @@ public class Main {
                             contadorEmpresas += 1;
                         }
                     }
-                    if (contadorEmpresas == 0){
+                    if (contadorEmpresas == 0) {
                         System.out.println("No existe una Empresa con este nombre");
                     }
                     break;
@@ -823,10 +806,9 @@ public class Main {
                     System.out.print("Código de la empresa : "); // Editar por código del centro logístico
 
                     Integer codigo = input.nextInt();
-                    if (misEmpresas.containsKey(codigo)){
+                    if (misEmpresas.containsKey(codigo)) {
                         System.out.println(misEmpresas.get(codigo));
-                    }
-                    else {
+                    } else {
                         System.out.println("No hay empresas registrados con ese código");
                     }
                     break;
@@ -841,7 +823,7 @@ public class Main {
                             contadorEmpresas2 += 1;
                         }
                     }
-                    if (contadorEmpresas2 == 0){
+                    if (contadorEmpresas2 == 0) {
                         System.out.println("No existe una Empresa con este número de teléfono");
                     }
                     break;
@@ -873,7 +855,7 @@ public class Main {
                             contadorSedes += 1;
                         }
                     }
-                    if (contadorSedes == 0){
+                    if (contadorSedes == 0) {
                         System.out.println("No existe una Sede con este nombre");
                     }
                     break;
@@ -881,10 +863,9 @@ public class Main {
                     System.out.print("Código de la sede : "); // Buscar por código de la sede
 
                     Integer codigo = input.nextInt();
-                    if (misSedes.containsKey(codigo)){
+                    if (misSedes.containsKey(codigo)) {
                         System.out.println(misSedes.get(codigo));
-                    }
-                    else {
+                    } else {
                         System.out.println("No hay sedes registrados con ese código");
                     }
                     break;
@@ -899,7 +880,7 @@ public class Main {
                             contadorSedes2 += 1;
                         }
                     }
-                    if (contadorSedes2 == 0){
+                    if (contadorSedes2 == 0) {
                         System.out.println("No existe una Sede con este correo");
                     }
                     break;
@@ -931,7 +912,7 @@ public class Main {
                             contadorCentros += 1;
                         }
                     }
-                    if (contadorCentros == 0){
+                    if (contadorCentros == 0) {
                         System.out.println("No existe un Centro Logístico con este nombre");
                     }
                     break;
@@ -939,10 +920,9 @@ public class Main {
                     System.out.print("Código del Centro Logístico : "); // Buscar por código del centro
 
                     Integer codigo = input.nextInt();
-                    if (misCentroLogistico.containsKey(codigo)){
+                    if (misCentroLogistico.containsKey(codigo)) {
                         System.out.println(misCentroLogistico.get(codigo));
-                    }
-                    else {
+                    } else {
                         System.out.println("No hay Centros Logísticos registrados con ese código");
                     }
                     break;
@@ -957,7 +937,7 @@ public class Main {
                             contadorCentros2 += 1;
                         }
                     }
-                    if (contadorCentros2 == 0){
+                    if (contadorCentros2 == 0) {
                         System.out.println("No existe un Centro con esa Dirección");
                     }
                     break;
