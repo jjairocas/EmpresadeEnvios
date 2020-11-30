@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.EliminarCentroLController">
+    <children>
+        <Label alignment="CENTER" layoutX="32.0" layoutY="46.0" prefHeight="46.0" prefWidth="358.0" text="Eliminar Centro Logístico" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="46.0">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="64.0" layoutY="140.0" prefHeight="25.0" prefWidth="96.0" text="Código:" AnchorPane.leftAnchor="64.0" />
+        <TextField fx:id="textCodigo" layoutX="174.0" layoutY="140.0" />
+        <Button layoutX="361.0" layoutY="309.0" mnemonicParsing="false" onAction="#enviar" prefHeight="46.0" prefWidth="102.0" text="Enviar" AnchorPane.bottomAnchor="44.60000000000002" />
+        <Button layoutX="496.0" layoutY="320.0" mnemonicParsing="false" onAction="#volver" prefHeight="46.0" prefWidth="96.0" text="Volver" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="33.0" />
+        <Label fx:id="warningMessageCodigo" layoutX="351.0" layoutY="135.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+        <Label fx:id="warningMessageGeneral" alignment="CENTER" layoutX="53.0" layoutY="230.0" prefHeight="46.0" prefWidth="494.0" textFill="RED" />
+    </children>
+</AnchorPane>
