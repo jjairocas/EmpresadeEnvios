@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CRUDEditarAristas">
+   <children>
+      <Label alignment="CENTER" layoutX="32.0" layoutY="32.0" prefHeight="46.0" prefWidth="358.0" text="Editar relación de una Sede" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="32.0">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="187.0" prefHeight="25.0" prefWidth="96.0" text="Código Empresa:" AnchorPane.leftAnchor="52.0" />
+      <TextField fx:id="textCodigoEmpresa" layoutX="162.0" layoutY="187.0" />
+      <Button layoutX="425.0" layoutY="348.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="36.0" prefWidth="71.0" text="Eliminar" AnchorPane.bottomAnchor="16.0" />
+      <Button layoutX="472.0" layoutY="326.0" mnemonicParsing="false" onAction="#volver" prefHeight="36.0" prefWidth="71.0" text="Volver" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0" />
+      <Label fx:id="warningMessageCodigoEmpresa" layoutX="339.0" layoutY="182.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+      <Label fx:id="warningMessageGeneral" alignment="CENTER" layoutX="53.0" layoutY="289.0" prefHeight="36.0" prefWidth="494.0" textFill="RED" />
+      <Label layoutX="53.0" layoutY="102.0" prefHeight="25.0" prefWidth="96.0" text="Código Sede:" />
+      <TextField fx:id="textCodigoSede1" layoutX="163.0" layoutY="102.0" />
+      <Label fx:id="warningMessageCodigoSede" layoutX="340.0" layoutY="97.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+      <Button layoutX="340.0" layoutY="348.0" mnemonicParsing="false" onAction="#crear" prefHeight="36.0" prefWidth="71.0" text="Crear" AnchorPane.bottomAnchor="16.0" />
+      <Label layoutX="53.0" layoutY="146.0" prefHeight="26.0" prefWidth="424.0" text="Diligencie el campo respectivo a la relación que desea editar:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="226.0" prefHeight="25.0" prefWidth="96.0" text="Código Centro L:" />
+      <TextField fx:id="textCodigoCentro" layoutX="163.0" layoutY="226.0" />
+      <Label fx:id="warningMessageCodigoCentro" layoutX="340.0" layoutY="221.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+      <Label layoutX="114.0" layoutY="298.0" prefHeight="26.0" prefWidth="168.0" textFill="RED" wrapText="true" />
+   </children>
+</AnchorPane>
