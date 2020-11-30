@@ -18,6 +18,7 @@ El sistema consiste en una empresa de envíos semiautomática en donde esta tien
 
 Para acceder iniciar sección y luego la opcion de administrador
 DATOS ADMINISTRADOR
+
 Usuario: cnhurtadom@unal.edu.co
 Contraseña: 0000
 
