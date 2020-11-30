@@ -33,10 +33,9 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa{" +
-                "codigoEmpresa=" + codigoEmpresa +
-                ", nombreDelaEmpresa='" + nombreDelaEmpresa + '\'' +
-                ", numeroTelefonico=" + numeroTelefonico +
-                '}';
+        return
+                "Nombre   : " + nombreDelaEmpresa +"\n"+
+                "Código   : " + codigoEmpresa + "\n"+
+                "Teléfono : " + numeroTelefonico;
     }
 }
