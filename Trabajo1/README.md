@@ -6,8 +6,8 @@ Integrantes:
 Cristan Giraldo Villegas
 correo: cgiraldo@unal.edu.co       
 
-Jhon Jairo Castaño Ruiz       
-correo:jjcastan@unal.edu.co
+Sara Duque Martinez
+correo: saduquema@unal.edu.co
 
 Carlos Norbey Hurtado Muñoz        
 correo:cnhurtadom@unal.edu.co
@@ -18,7 +18,12 @@ El sistema consiste en una empresa de envíos semiautomática en donde esta tien
 
 Para acceder iniciar sección y luego la opcion de administrador
 DATOS ADMINISTRADOR
-Cedula: 0000
-Contraseña: admin 
+Usuario: cnhurtadom@unal.edu.co
+Contraseña: 0000
 
+Usuario: Sara Duque Martinez
+Contraseña: 1111
+
+Usuario: cgiraldo@unal.edu.co
+Contraseña: 2222
 
