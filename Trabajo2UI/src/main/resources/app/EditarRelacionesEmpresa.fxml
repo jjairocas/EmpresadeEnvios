@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.EditarRelacionesEmpresaController">
+   <children>
+      <Label alignment="CENTER" layoutX="121.0" layoutY="38.0" prefHeight="46.0" prefWidth="358.0" text="Editar relación de una Empresa">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="112.0" prefHeight="25.0" prefWidth="105.0" text="Código Empresa:" />
+      <TextField fx:id="textCodigoEmpresa1" layoutX="173.0" layoutY="112.0" />
+      <Label layoutX="63.0" layoutY="156.0" prefHeight="26.0" prefWidth="424.0" text="Diligencie el campo respectivo a la relación que desea editar:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="197.0" prefHeight="25.0" prefWidth="96.0" text="Código Sede:" />
+      <TextField fx:id="textCodigoSede" layoutX="172.0" layoutY="197.0" />
+      <Label layoutX="62.0" layoutY="236.0" prefHeight="25.0" prefWidth="96.0" text="Código Empresa:" />
+      <TextField fx:id="textCodigoEmpresa2" layoutX="173.0" layoutY="236.0" />
+      <Button layoutX="350.0" layoutY="358.0" mnemonicParsing="false" onAction="#crear" prefHeight="36.0" prefWidth="71.0" text="Crear" />
+      <Button layoutX="435.0" layoutY="358.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="36.0" prefWidth="71.0" text="Eliminar" />
+      <Button layoutX="515.0" layoutY="358.0" mnemonicParsing="false" onAction="#volver" prefHeight="36.0" prefWidth="71.0" text="Volver" />
+      <Label fx:id="warningMessageCodigoSede" layoutX="349.0" layoutY="192.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+      <Label fx:id="warningMessageGeneral" alignment="CENTER" layoutX="63.0" layoutY="299.0" prefHeight="36.0" prefWidth="494.0" textFill="RED" />
+      <Label fx:id="warningMessageCodigoEmpresa1" layoutX="350.0" layoutY="107.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+      <Label fx:id="warningMessageCodigoEmpresa2" layoutX="350.0" layoutY="231.0" prefHeight="36.0" prefWidth="209.0" textFill="RED" wrapText="true" />
+   </children>
+</AnchorPane>

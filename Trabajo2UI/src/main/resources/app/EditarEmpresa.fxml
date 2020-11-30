@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="362.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.EditarEmpresaController">
+   <children>
+      <Label layoutX="254.0" layoutY="21.0" text="Editar Empresa">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="67.0" prefHeight="5.0" prefWidth="39.0" text="Código" />
+      <TextField fx:id="codigoTextField" layoutX="124.0" layoutY="63.0" />
+      <Label fx:id="NuevocodigoLabel" layoutX="64.0" layoutY="108.0" text="Nuevo código" visible="false" />
+      <TextField fx:id="NuevocodigoTextField" layoutX="151.0" layoutY="104.0" visible="false" />
+      <Label fx:id="NuevonombreLabel" layoutX="62.0" layoutY="152.0" text="Nuevo nombre" visible="false" />
+      <TextField fx:id="NuevonombreTextField" layoutX="151.0" layoutY="148.0" visible="false" />
+      <Label fx:id="NuevotelefonoLabel" layoutX="62.0" layoutY="192.0" text="Nuevo teléfono" visible="false" />
+      <TextField fx:id="NuevotelefonoTextField" layoutX="151.0" layoutY="188.0" visible="false" />
+      <Button layoutX="379.0" layoutY="278.0" mnemonicParsing="false" onAction="#volver" prefHeight="53.0" prefWidth="98.0" text="Volver" />
+      <Button layoutX="282.0" layoutY="63.0" mnemonicParsing="false" onAction="#enviar" text="Verificar" />
+      <Label fx:id="warningMessageNumero" layoutX="326.0" layoutY="67.0" text="Label" textFill="#e80a0a" visible="false" />
+      <Label fx:id="warningMessageExistencia" layoutX="312.0" layoutY="67.0" text="Label" textFill="#f20a0a" visible="false" />
+      <Button fx:id="enviarButton" layoutX="488.0" layoutY="278.0" mnemonicParsing="false" onAction="#enviarConfirmacion" prefHeight="53.0" prefWidth="98.0" text="Enviar" />
+   </children>
+</AnchorPane>

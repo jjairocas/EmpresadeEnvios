@@ -8,19 +8,28 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CrearEmpresaController">
    <children>
-      <Label layoutX="217.0" layoutY="23.0" text="CREACIÓN DE EMPRESA">
+      <Label layoutX="217.0" layoutY="23.0" text="Crear Empresa">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="141.0" layoutY="114.0" text="Nombre" />
-      <Label layoutX="143.0" layoutY="69.0" text="Código" />
-      <Label layoutX="139.0" layoutY="161.0" text="Telefono" />
-      <TextField fx:id="codigoTextField" layoutX="217.0" layoutY="65.0" />
-      <TextField fx:id="nombreTextField" layoutX="217.0" layoutY="110.0" />
-      <TextField fx:id="telefonoTextField" layoutX="217.0" layoutY="157.0" />
-      <Button layoutX="217.0" layoutY="223.0" mnemonicParsing="false" text="Enviar" />
-      <Button layoutX="316.0" layoutY="223.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
-      <Label fx:id="codigoLabel" layoutX="402.0" layoutY="69.0" text="Label" />
+      <Label layoutX="50.0" layoutY="114.0" text="Nombre" />
+      <Label layoutX="52.0" layoutY="69.0" text="Código" />
+      <Label layoutX="49.0" layoutY="161.0" text="Telefono" />
+      <TextField fx:id="codigoTextField" layoutX="116.0" layoutY="65.0" />
+      <TextField fx:id="nombreTextField" layoutX="116.0" layoutY="110.0" />
+      <TextField fx:id="telefonoTextField" layoutX="116.0" layoutY="157.0" />
+      <Button layoutX="359.0" layoutY="341.0" mnemonicParsing="false" onAction="#enviar" prefHeight="38.0" prefWidth="77.0" text="Enviar" />
+      <Button layoutX="451.0" layoutY="341.0" mnemonicParsing="false" onAction="#volver" prefHeight="38.0" prefWidth="77.0" text="Volver" />
+      <Label fx:id="codigoLabel" layoutX="280.0" layoutY="67.0" text="Label" textFill="#d71414" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="warningMessageCodigo" layoutX="283.0" layoutY="69.0" text="Label" textFill="#f20c0c" visible="false" />
+      <Label fx:id="AdvertenciaLabel" layoutX="52.0" layoutY="211.0" text="Label" textFill="#e80a0a" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
