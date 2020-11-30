@@ -14,27 +14,21 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="24.0" layoutY="50.0" text="Seleccione la entidad a buscar">
+      <Label layoutX="24.0" layoutY="119.0" text="Seleccione la entidad a buscar">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="91.0" text="Seleccione el atributo a buscar" visible="false">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="111.0" layoutY="131.0" text="Ingrese el valor" visible="false">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="entidadChoiceBox" layoutX="211.0" layoutY="47.0" prefHeight="25.0" prefWidth="217.0" />
-      <ChoiceBox fx:id="atributoEmpresaChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
+      <ChoiceBox fx:id="entidadChoiceBox" layoutX="211.0" layoutY="108.0" prefHeight="30.0" prefWidth="139.0" />
       <TextField fx:id="valorTextField" layoutX="211.0" layoutY="128.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
-      <Button layoutX="444.0" layoutY="128.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Buscar" visible="false" />
-      <Button fx:id="VolverButton" layoutX="444.0" layoutY="47.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
-      <ChoiceBox fx:id="atributoSedeChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
-      <ChoiceBox fx:id="atributoCentroChoiceBox" layoutX="211.0" layoutY="88.0" prefHeight="25.0" prefWidth="217.0" visible="false" />
+      <Button fx:id="VolverButton" layoutX="533.0" layoutY="413.0" mnemonicParsing="false" onAction="#volver" prefHeight="47.0" prefWidth="65.0" text="Volver" />
+      <Label layoutX="48.0" layoutY="201.0" text="Seleccione atributo a buscar" />
+      <ChoiceBox fx:id="atributoChoiceBox" layoutX="211.0" layoutY="201.0" prefHeight="30.0" prefWidth="161.0" />
+      <Button fx:id="buscarButton" layoutX="436.0" layoutY="413.0" mnemonicParsing="false" onAction="#buscar" prefHeight="47.0" prefWidth="65.0" text="buscar" />
+      <Label fx:id="ErrorBloque1" layoutX="392.0" layoutY="113.0" prefHeight="30.0" prefWidth="190.0" textFill="RED" wrapText="true" />
+      <Label layoutX="111.0" layoutY="299.0" text="Busqueda" />
+      <TextField fx:id="busqueda" layoutX="211.0" layoutY="299.0" prefHeight="19.0" prefWidth="97.0" />
+      <Label fx:id="ErrorBusqueda" layoutX="336.0" layoutY="288.0" prefHeight="47.0" prefWidth="239.0" textFill="RED" wrapText="true" />
+      <Label fx:id="ErrorBloque2" layoutX="414.0" layoutY="204.0" prefHeight="30.0" prefWidth="161.0" textFill="RED" wrapText="true" />
    </children>
 </AnchorPane>
