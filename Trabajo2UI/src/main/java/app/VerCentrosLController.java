@@ -29,11 +29,16 @@ public class VerCentrosLController implements Initializable {
         listView.getItems().add("Aristas = Relaciones: ");
 
         for (CentroLogistico centro : App.misCentroLogistico.values()) {
-            ArrayList<Object> Adyacentes = new ArrayList<>(Graphs.neighborListOf(App.grafo, centro));
-            listView.getItems().add(centro+": ");
-            listView.getItems().add(Adyacentes);
-            listView.getItems().add("");
-
+            try {
+                if (!(App.grafo.outgoingEdgesOf(centro) == null)) {
+                    ArrayList<Object> Adyacentes = new ArrayList<>(Graphs.neighborListOf(App.grafo, centro));
+                    listView.getItems().add(centro + ": ");
+                    listView.getItems().add(Adyacentes);
+                    listView.getItems().add("");
+                }
+            } catch (Exception e) {
+                return;
+            }
         }
     }
 
